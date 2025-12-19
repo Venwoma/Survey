@@ -1,0 +1,72 @@
+.menuBox {
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.buttonGroup {
+  margin-top: 46px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.button {
+  width: 214px;
+  height: 64px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  background: #ffffff;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(15, 57, 87, 0.06);
+  }
+}
+
+.buttonIcon {
+  width: 30px;
+  height: 30px;
+  background: #000;
+  border-radius: 6px;
+}
+
+.buttonName {
+  width: 140px;
+  margin-left: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #000000;
+  transition: all 0.2s ease-in-out;
+}
+
+/* =========================
+   Back 按钮样式变体
+   ========================= */
+.backButton {
+  background: #f5f5f5;
+
+  .buttonIcon {
+    background: #666;
+  }
+
+  .buttonName {
+    color: #666;
+    font-weight: 600;
+  }
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.06);
+  }
+}
+.backRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;   // 关键
+}

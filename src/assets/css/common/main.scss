@@ -1,0 +1,107 @@
+@use 'sass:string';
+:root {
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: light dark;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+* {
+    box-sizing: border-box;
+}
+
+.test-b {
+    border: 1px red solid;
+}
+.test-g {
+    border: 1px green solid;
+}
+
+html,
+body,
+#root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    contain: layout;
+    overflow: auto;
+}
+* {
+    scrollbar-width: thin;
+}
+
+//margin  padding 设置
+$mp-list: (top, right, bottom, left); //边距的方向
+$primary-color: #2672ff; // 主题蓝色  次变量只作用本文件，全局变量使用var.scss中
+@for $i from 1 through 100 {
+    $num: $i * 2;
+    .pa-#{$num} {
+        padding: #{$num}px;
+    }
+    .ma-#{$num} {
+        margin: #{$num}px;
+    }
+    .br-#{$num} {
+        border-radius: #{$num}px;
+    }
+    @each $name in $mp-list {
+        $n: string.slice($name, 0, 1);
+        .m#{$n}-#{$num} {
+            margin-#{$name}: #{$num}px;
+        }
+        .p#{$n}-#{$num} {
+            padding-#{$name}: #{$num}px;
+        }
+    }
+}
+
+@for $i from 1 through 20 {
+    @each $name in $mp-list {
+        $num: $i * 3;
+        $n: string.slice($name, 0, 1);
+        .m#{$n}-#{$num} {
+            margin-#{$name}: #{$num}px;
+        }
+        .p#{$n}-#{$num} {
+            padding-#{$name}: #{$num}px;
+        }
+    }
+}
+//原子化布局
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex {
+    display: flex;
+}
+.flex-columns {
+    display: flex;
+    flex-direction: column;
+}
+
+.not-found {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.full-loading {
+    // position: fixed;
+    // top: 0;
+    // bottom: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

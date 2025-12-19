@@ -1,0 +1,18 @@
+@use './vars.scss' as *;
+
+.#{$tagkey}-process {
+    position: absolute;
+    top: 0;
+    height: 2px;
+    left: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.1);
+    .#{$tagkey}-process-line {
+        background: #8559f2;
+        position: absolute;
+        top: 50%;
+        height: 1px;
+        transform: translateY(-50%);
+        transition: all 0.2s linear;
+    }
+}

@@ -1,0 +1,69 @@
+@use './vars.scss' as *;
+@use 'sass:string';
+
+/* ui全局变量*/
+:root {
+    --zIndex: 20000;
+}
+.test-b {
+    border: 1px red solid;
+}
+/*ui的全局样式 */
+@for $i from 1 through 10 {
+    $px: $i * 4;
+    $d: (top, right, bottom, left);
+    @each $_d in $d {
+        $c: string.slice($_d, 0, 1);
+        .#{$tagkey}-m#{$c}-#{$px} {
+            margin-#{$_d}: #{$px}px;
+        }
+        .#{$tagkey}-p#{$c}-#{$px} {
+            padding-#{$_d}: #{$px}px;
+        }
+    }
+}
+.#{$tagkey},
+.#{$tagkey} * {
+    box-sizing: border-box;
+    font-size: 14px;
+    color: initial;
+    letter-spacing: initial;
+    color: initial;
+}
+.#{$tagkey} input,
+#{$tagkey}.input,
+#{$tagkey} label {
+    width: auto;
+}
+/* 动画渐进样式 */
+.#{$tagkey}-animation-fadein {
+    animation: #{$tagkey}-animation-fadein 0.5s ease both;
+}
+/* 布局 */
+.#{$tagkey} div,
+.#{$tagkey} span {
+    box-sizing: border-box;
+}
+.#{$tagkey}-flex {
+    display: flex;
+    align-items: center;
+}
+.#{$tagkey}-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.#{$tagkey}-flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.#{$tagkey}-icon {
+    height: 24px;
+    width: 24px;
+}
+
+.#{$tagkey}-no-selected {
+    user-select: none;
+}

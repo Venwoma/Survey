@@ -1,0 +1,82 @@
+.menuBox {
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .logo {
+        width: 62px;
+        height: 62px;
+        background: rgb(68, 140, 241);
+    }
+    .buttonGroup {
+        margin-top: 46px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        .button {
+            width: 214px;
+            height: 64px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            padding-left: 24px;
+            background: #ffffff;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            &:hover {
+                background: rgba(15, 57, 87, 0.06);
+            }
+            .buttonIcon {
+                width: 30px;
+                height: 30px;
+                background: #000;
+            }
+            .buttonName {
+                width: 140px;
+                margin-left: 20px;
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 20px;
+                color: #000000;
+                transition: all 0.2s ease-in-out;
+            }
+        }
+        .createButton {
+            margin-left: 12px;
+            margin-top: 16px;
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            background: #4f46e5;
+            cursor: pointer;
+        }
+        .collapsedButton {
+            width: 64px;
+            padding-left: 17px;
+            .buttonName {
+                width: 0px;
+                overflow: hidden;
+                margin-left: 0px;
+            }
+        }
+    }
+
+    .userInfo {
+        flex: 1;
+        width: 64px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        margin-bottom: 16px;
+        .avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 28px;
+            background: rgb(93, 172, 247);
+        }
+        .userName {
+            margin-top: 14px;
+        }
+    }
+}

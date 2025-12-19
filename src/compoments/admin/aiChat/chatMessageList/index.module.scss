@@ -1,0 +1,90 @@
+.messageListBox {
+    max-height: calc(100%);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px 0px;
+    // background: #b4f6ff;
+    // hidden scrollbar (still scrollable)
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none; // IE 10+
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+    .messageWrap {
+        display: flex;
+        font-size: 16px;
+        font-weight: normal;
+        line-height: normal;
+        color: #000000;
+    }
+    .userMessage {
+        justify-content: flex-end;
+        .message {
+            max-width: 332px;
+            border-radius: 12px;
+            padding: 16px;
+            background: rgba(0, 0, 0, 0.04);
+        }
+    }
+    .aiMessage {
+        justify-content: flex-start;
+        .message {
+            max-width: 332px;
+            border-radius: 12px;
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            padding: 12px 16px;
+        }
+    }
+    .loadMessage {
+        justify-content: flex-start;
+        .message {
+            width: 332px;
+            height: 51px;
+            border-radius: 12px;
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            padding: 16px;
+            display: flex;
+            align-items: center;
+        }
+        // 加载动效样式
+        .loadingDots {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            margin-right: 8px;
+            .dot {
+                width: 8px;
+                height: 8px;
+                background: #4f46e5;
+                border-radius: 50%;
+                animation: dotPulse 1.4s ease-in-out infinite both;
+                &:nth-child(1) {
+                    animation-delay: -1s;
+                }
+                &:nth-child(2) {
+                    animation-delay: -0.5s;
+                }
+                &:nth-child(3) {
+                    animation-delay: 0s;
+                }
+            }
+        }
+    }
+    @keyframes dotPulse {
+        0%,
+        80%,
+        100% {
+            transform: scale(0.8);
+            opacity: 0.5;
+        }
+        40% {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+    }
+}

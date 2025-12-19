@@ -1,0 +1,138 @@
+.tableBox {
+    // 表格样式
+    :global {
+        .ant-table-wrapper {
+            .ant-spin-container {
+                .ant-table {
+                    background: transparent;
+                    .ant-table-container {
+                        .ant-table-content {
+                            display: flex;
+                            flex-direction: column;
+
+                            //   表头
+                            .ant-table-thead {
+                                height: 50px;
+                                box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.04);
+                                .ant-table-cell {
+                                    background: #ffffff;
+                                    font-size: 14px;
+                                    font-weight: normal;
+                                    color: rgba(0, 0, 0, 0.6);
+                                    padding: 12px 20px;
+                                }
+                                .ant-table-cell::before {
+                                    display: none;
+                                }
+                            }
+                            //   圆角
+                            .ant-table-thead > tr:first-child > *:first-child {
+                                border-start-start-radius: 12px;
+                                border-end-start-radius: 12px;
+                            }
+                            .ant-table-thead > tr:first-child > *:last-child {
+                                border-start-end-radius: 12px;
+                                border-end-end-radius: 12px;
+                            }
+
+                            // 表数据
+                            .ant-table-tbody {
+                                .ant-table-row {
+                                    height: 88px;
+                                    border-radius: 8px;
+                                    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.04);
+                                    background: #ffffff;
+                                    .ant-table-cell {
+                                        padding: 12px 20px;
+                                        font-size: 16px;
+                                        font-weight: normal;
+                                        color: #000000;
+                                    }
+                                }
+                                // 圆角
+                                .ant-table-row > *:first-child {
+                                    border-start-start-radius: 12px;
+                                    border-end-start-radius: 12px;
+                                }
+                                .ant-table-row > *:last-child {
+                                    border-start-end-radius: 12px;
+                                    border-end-end-radius: 12px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .ant-table-wrapper table {
+            border-collapse: separate;
+            border-spacing: 0px 8px;
+        }
+    }
+    .titleBox {
+        display: flex;
+        align-items: center;
+        .leftIcon {
+            width: 44px;
+            height: 44px;
+            background: red;
+        }
+        .rightContent {
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .title {
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 24px;
+                color: #000000;
+            }
+            .titleInput {
+            }
+            .date {
+                font-size: 14px;
+                font-weight: normal;
+                line-height: 20px;
+                color: rgba(0, 0, 0, 0.6);
+            }
+        }
+    }
+    .statusTag {
+        height: 24px;
+        border-radius: 12px;
+        /*自动布局*/
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        line-height: 22px;
+        padding: 0px 8px;
+        border: 1px solid #44a878;
+    }
+    .Active {
+        background: #dcfcee;
+        color: #287952;
+        border-color: #44a878;
+    }
+    .Draft {
+        background: rgba(255, 171, 0, 0.14);
+        color: #e7943c;
+        border-color: #e7ae3c;
+    }
+    .Paused {
+        background: rgba(0, 0, 0, 0.06);
+        color: #9e9e9e;
+        border-color: #c7c7c7;
+    }
+
+    .actionBox {
+        display: flex;
+        gap: 23px;
+        .actionButton {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            background: rgb(212, 250, 165);
+        }
+    }
+}

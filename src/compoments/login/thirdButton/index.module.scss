@@ -1,0 +1,21 @@
+.buttonContainer {
+    cursor: pointer;
+    height: 60px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.08);
+
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 24px;
+    color: #262627;
+    .buttonIcon {
+        width: 20px;
+        height: 20px;
+        background: #fff25e;
+        margin-right: 10px;
+    }
+}

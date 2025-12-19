@@ -1,0 +1,58 @@
+.aiChatCssBox {
+    height: 100%;
+    padding: 24px;
+    width: 460px;
+    border-radius: 24px;
+    background: #ffffff;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    .header {
+        height: 44px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 44px;
+        color: #1f2937;
+        .closeIcon {
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            background: #000;
+        }
+    }
+    .messageList {
+        height: calc(100% - 158px);
+        margin-bottom: 16px;
+    }
+    .inputWrap {
+        position: relative;
+        .createInput {
+            height: 97px;
+            border-radius: 8px;
+        }
+        :global {
+            .ant-input {
+                resize: none;
+                padding: 12px 16px 38px 16px;
+                font-size: 16px;
+                font-weight: normal;
+                line-height: 24px;
+                color: #000000;
+            }
+        }
+        .sendButton {
+            cursor: pointer;
+            width: 28px;
+            height: 28px;
+            border-radius: 14px;
+            position: absolute;
+            background: #4f46e5;
+            right: 16px;
+            bottom: 14px;
+        }
+    }
+}

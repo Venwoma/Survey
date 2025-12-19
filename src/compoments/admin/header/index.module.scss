@@ -1,0 +1,20 @@
+.header {
+    height: 52px;
+    background: rgba(133, 178, 241, 0.701);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .title {
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 38px;
+        color: #000000;
+    }
+    .button {
+        height: 52px;
+        background: #4f46e5;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: 500;
+    }
+}

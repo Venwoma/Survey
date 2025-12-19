@@ -1,0 +1,815 @@
+.index-page {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    // max-height: 100vh;
+    font-family: Roboto;
+    min-width: 1024px;
+}
+
+// 吸顶页头
+.index-fixed-header {
+    height: 64px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0px;
+    background: transparent;
+    padding: 12px 254px;
+    z-index: 200;
+}
+
+.index-fixed-header.scrolled {
+    background: #ffffff;
+}
+
+.index-header-left {
+    width: 184px;
+    height: 40px;
+}
+.index-header-right {
+    display: flex;
+}
+.header-item {
+    cursor: pointer;
+    height: 40px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    padding: 8px 24px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 24px;
+    color: #000000;
+}
+.header-item-primary {
+    color: #ffffff;
+    background: #4f46e5;
+}
+
+// 第一屏
+.page-first {
+    height: 1080px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 170px 0px 92px 0px;
+    background: url('#{$vite-app-cdn}/images/index/first-bg.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.index-title-h1 {
+    font-family: Lexend;
+    font-size: 54px;
+    font-weight: bold;
+    line-height: 75px;
+    text-align: center;
+    color: #111827;
+}
+.page-first-intro {
+    display: flex;
+    gap: 62px;
+    margin-top: 46px;
+    justify-content: center;
+}
+.index-intro-item {
+    position: relative;
+    width: 420px;
+    height: 72px;
+    border-radius: 12px;
+    background: #f9faff;
+    box-shadow: 0px 4px 33px 0px rgba(61, 54, 167, 0.13);
+    padding: 8px 28px;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 28px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.7);
+
+    z-index: 0;
+}
+.index-intro-icon {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    top: -24px;
+    left: -24px;
+}
+.first-video {
+    width: 834px;
+    height: 510px;
+    margin-top: 40px;
+    border-radius: 16px;
+    background: #000000;
+    border: 10px solid black;
+}
+
+// 第二屏
+.page-second {
+    width: 100%;
+    background: #f9f9f9;
+}
+.second-inner {
+    width: 100%;
+    background: #ffffff;
+    padding: 120px 0px 76px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.index-title-h2 {
+    font-family: Lexend;
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 58px;
+    text-align: center;
+    color: #000000;
+}
+.index-title-h3 {
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 28px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.8);
+    margin-top: 18px;
+}
+.points-warp {
+    display: flex;
+    gap: 24px;
+    margin-top: 70px;
+}
+.points-item {
+    max-width: 450px;
+    min-height: 230px;
+    border-radius: 10px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.001)), #f5f5f7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 36px;
+}
+.points-icon {
+    width: 50px;
+    height: 50px;
+}
+.points-title {
+    margin-top: 24px;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 28px;
+    color: #000000;
+}
+.points-desc {
+    margin-top: 16px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 24px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+// 第三屏
+.page-third {
+    background: #f6faff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 0px 0px 0px;
+}
+.title-image {
+    width: 466px;
+    height: 58px;
+    margin-bottom: 16px;
+}
+.third-title {
+    font-family: Lexend;
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 58px;
+    height: 60px;
+    text-align: center;
+    background: linear-gradient(94deg, #0003af 16%, #2672ff 105%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 16px;
+}
+.steps-warp {
+    width: 100%;
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+}
+.step-card {
+    width: 100%;
+    height: 750px;
+    display: flex;
+    padding: 0px 0px 0px 200px;
+    justify-content: space-between;
+    position: relative;
+    // margin-bottom: 270px;
+}
+.card-left {
+    width: 35%;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    // opacity: 0;
+}
+.card-left-block {
+    width: 35%;
+}
+.card-left-opacity {
+    opacity: 0;
+}
+.card-left-fixed {
+    width: 32%;
+    position: fixed;
+    pointer-events: none;
+    left: 200px;
+    top: 20%;
+    opacity: 1;
+    animation: cardAnimate 0.8s ease;
+}
+.animate-off {
+    animation: cardAnimate 0s ease;
+}
+
+@keyframes cardAnimate {
+    from {
+        transform: translateY(5%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+.step-index {
+    width: 130px;
+    height: 50px;
+    border-radius: 8px;
+    background: rgba(79, 70, 229, 0.1);
+    text-align: center;
+    font-size: 32px;
+    font-weight: normal;
+    line-height: 46px;
+    color: #4f46e5;
+    margin-bottom: 90px;
+}
+.step-title {
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 42px;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 24px;
+}
+.step-desc {
+    max-width: 670px;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 28px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 60px;
+}
+.step-text {
+    display: flex;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 32px;
+    align-items: center;
+}
+.step-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+}
+.index-right-image {
+    // position: absolute;
+    // right: 0px;
+    width: 932px;
+    height: 684px;
+}
+
+// 第四屏
+.page-fourth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 0px 176px 0px;
+}
+.save-card-warp {
+    margin-top: 94px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.save-card {
+    width: 550px;
+    height: 200px;
+    border-radius: 24px;
+    background: #f4f7ff;
+    padding: 32px 110px 0px 52px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.save-icon {
+    width: 160px;
+    height: 160px;
+    position: absolute;
+    right: 0px;
+    bottom: -16px;
+}
+.save-title {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 58px;
+    letter-spacing: 0px;
+
+    font-variation-settings: 'opsz' auto;
+    font-feature-settings: 'kern' on;
+    color: #000000;
+}
+.save-desc {
+    font-size: 16px;
+    max-width: 320px;
+    font-weight: normal;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.6);
+}
+.index-page-footer {
+    background: #2b2b2b;
+    padding: 100px 0px 28px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.index-footer-title {
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 40px;
+    color: #ffffff;
+    margin-bottom: 24px;
+}
+.index-footer-desc {
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 28px;
+    color: #ffffff;
+}
+.index-button-group {
+    margin-top: 32px;
+    display: flex;
+    gap: 16px;
+}
+.index-white-button {
+    cursor: pointer;
+    width: 170px;
+    height: 50px;
+    border-radius: 4px;
+    background: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 50px;
+    text-align: center;
+    color: #2a2a2a;
+}
+.black-button {
+    cursor: pointer;
+    width: 170px;
+    height: 50px;
+    border-radius: 4px;
+    background: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 46px;
+    text-align: center;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0);
+    border: 1px solid #ffffff;
+}
+.footer-index-button-group {
+    width: 100%;
+    margin-top: 48px;
+    padding-right: 80px;
+    display: flex;
+    justify-content: flex-end;
+}
+.index-text-button {
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 24px;
+    text-decoration: underline;
+    color: #ffffff;
+    margin-left: 22px;
+}
+
+.index-fixed-button {
+    cursor: pointer;
+    position: fixed;
+    bottom: 62px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 370px;
+    height: 58px;
+    border-radius: 4px;
+    background: #4f46e5;
+    font-family: Source Han Sans;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: normal;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 100;
+}
+
+// 小屏 紧凑布局
+@media screen and (max-width: 1440px) {
+    .index-fixed-header {
+        padding: 12px 60px;
+    }
+    .index-title-h1 {
+        font-size: 46px;
+        font-weight: normal;
+        line-height: 65px;
+    }
+    .page-first-intro {
+        max-width: 1000px;
+        gap: 44px;
+        flex-wrap: wrap;
+    }
+    .first-video {
+        width: 632px;
+        height: 380px;
+    }
+
+    .index-title-h2 {
+        font-size: 36px;
+        font-weight: normal;
+        line-height: 58px;
+    }
+    .index-title-h3 {
+        font-size: 18px;
+        margin-top: 32px;
+        width: 918px;
+    }
+    .points-warp {
+        gap: 18px;
+        margin-top: 32px;
+    }
+    .points-item {
+        max-width: 294px;
+        min-height: 197px;
+        border-radius: 10px;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.001)), #f5f5f7;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0px 32px;
+    }
+    .points-title {
+        margin-top: 18px;
+        font-size: 20px;
+        color: #000000;
+    }
+    .points-desc {
+        margin-top: 12px;
+        font-size: 12px;
+    }
+
+    .step-card {
+        height: 580px;
+        padding: 0px 0px 0px 72px;
+    }
+    .index-right-image {
+        width: 588px;
+        height: 485px;
+    }
+    .card-left {
+        width: 40%;
+    }
+    .card-left-block {
+        width: 40%;
+        height: 580px;
+    }
+    .card-left-fixed {
+        width: 36%;
+        left: 72px;
+    }
+    .step-index {
+        width: 100px;
+        height: 34px;
+        border-radius: 8px;
+        background: rgba(79, 70, 229, 0.1);
+        text-align: center;
+        font-size: 22px;
+        font-weight: normal;
+        line-height: 34px;
+        color: #4f46e5;
+        margin-bottom: 40px;
+    }
+    .step-title {
+        font-size: 32px;
+        font-weight: 500;
+        line-height: 28px;
+        color: rgba(0, 0, 0, 0.8);
+        margin-bottom: 32px;
+    }
+    .step-desc {
+        font-size: 18px;
+        font-weight: normal;
+        line-height: 20px;
+        color: rgba(0, 0, 0, 0.6);
+        margin-bottom: 20px;
+    }
+    .step-text {
+        display: flex;
+        font-size: 18px;
+        font-weight: normal;
+        line-height: 24px;
+        color: rgba(0, 0, 0, 0.6);
+        margin-bottom: 16px;
+    }
+    .step-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 16px;
+    }
+    .page-fourth {
+        padding: 80px 0px 110px 0px;
+    }
+    .save-card-warp {
+        margin-top: 30px;
+        gap: 47px;
+        flex-wrap: wrap;
+        width: 600px;
+    }
+    .save-card {
+        width: 550px;
+    }
+    .index-page-footer {
+        padding: 44px 0px;
+    }
+    .footer-index-button-group {
+        justify-content: center;
+        padding-right: 0px;
+        gap: 22px;
+    }
+    .index-text-button {
+        margin-left: 0px;
+    }
+    .index-fixed-button {
+        width: 260px;
+    }
+}
+
+// 移动端布局
+.mobile-index-page {
+    min-width: auto;
+}
+.mobile-index-fixed-header {
+    padding: 16px 12px;
+    height: 56px;
+}
+.mobile-index-header-left {
+    width: 110px;
+    height: 24px;
+}
+.mobile-header-item {
+    height: 24px;
+    padding: 0px 6px;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 24px;
+    margin-left: 8px;
+}
+
+.mobile-page-first {
+    height: auto;
+    padding: 77px 0px 32px 0px;
+}
+
+.mobile-title-h1 {
+    font-size: 25px;
+    font-weight: normal;
+    line-height: 30px;
+    max-width: 90%;
+}
+
+.mobile-page-first-intro {
+    flex-direction: column;
+    gap: 11px;
+    width: 100%;
+    align-items: center;
+}
+
+.mobile-index-intro-item {
+    width: 296px;
+    height: auto;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 20px;
+}
+.mobile-index-intro-icon {
+    width: 22px;
+    height: 22px;
+    top: -11px;
+    left: -11px;
+}
+.mobile-first-video {
+    width: 281px;
+    height: 172px;
+    margin-top: 30px;
+    border-radius: 4px;
+    border: 4px solid black;
+}
+
+.mobile-second-inner {
+    padding: 60px 0px 32px 0px;
+}
+
+.mobile-index-title-h2 {
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 30px;
+    max-width: 90%;
+}
+
+.mobile-index-title-h3 {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 24px;
+    width: 300px;
+    margin-top: 12px;
+}
+
+.mobile-points-warp {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 32px;
+}
+.mobile-points-item {
+    width: 294px;
+    min-height: 132px;
+    padding: 0px 28px;
+}
+.mobile-points-icon {
+}
+.mobile-points-title {
+    margin-top: 4px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 28px;
+}
+.mobile-points-desc {
+    margin-top: 8px;
+    font-size: 10px;
+    font-weight: normal;
+    line-height: 16px;
+}
+
+.mobile-page-third {
+    padding: 30px 0px 0px 0px;
+}
+
+.mobile-third-title {
+    font-size: 30px;
+    line-height: 58px;
+    margin-bottom: 0px;
+}
+.mobile-steps-warp {
+    margin-top: 26px;
+}
+.mobile-step-card {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 0px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 30px 0px 30px 0px;
+}
+.mobile-card-left {
+    width: 335px;
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 26px;
+}
+.mobile-step-index {
+    width: 66px;
+    height: 31px;
+    font-size: 15px;
+    line-height: 28px;
+    margin-bottom: 18px;
+}
+.mobile-step-title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28px;
+    margin-bottom: 6px;
+}
+.mobile-step-desc {
+    font-size: 12px;
+    line-height: 20px;
+    margin-bottom: 12px;
+}
+.mobile-step-text {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 10px;
+}
+.mobile-step-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 12px;
+}
+.mobile-index-right-image {
+    width: 80%;
+    height: auto;
+}
+
+.mobile-page-fourth {
+    padding: 30px 0px 60px 0px;
+}
+.mobile-save-card-warp {
+    margin-top: 20px;
+    flex-direction: column;
+    gap: 22px;
+    width: 100%;
+    align-items: center;
+}
+.mobile-save-card {
+    width: 329px;
+    height: 136px;
+    padding: 12px 94px 0px 14px;
+}
+.mobile-save-title {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 48px;
+}
+.mobile-save-desc {
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 20px;
+}
+.mobile-save-icon {
+    width: 100px;
+    height: 100px;
+    bottom: -10px;
+}
+
+.mobile-index-page-footer {
+    padding: 15px 18px 22px 18px;
+}
+.mobile-index-footer-title {
+    font-size: 18px;
+    line-height: 30px;
+    margin-bottom: 12px;
+}
+.mobile-index-footer-desc {
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+}
+.mobile-index-button-group {
+    margin-top: 12px;
+}
+.mobile-index-white-button {
+    width: 268px;
+    height: 38px;
+    font-size: 12px;
+    line-height: 38px;
+}
+.mobile-footer-index-button-group {
+    margin-top: 24px;
+    gap: 48px;
+}
+.mobile-index-text-button {
+    font-size: 12px;
+    line-height: 24px;
+}
+.mobile-index-fixed-button {
+    width: 272px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 40px;
+}

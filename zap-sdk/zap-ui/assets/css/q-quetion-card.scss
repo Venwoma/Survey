@@ -1,0 +1,26 @@
+@use './vars.scss' as *;
+.#{$tagkey}.#{$tagkey}-c-question-card {
+    display: block;
+    width: 360px;
+    border-radius: 8px;
+    background: #ffffff;
+    padding: 36px 24px 22px;
+    box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.06);
+    position: fixed;
+    bottom: 12px;
+    right: 12px;
+    z-index: 20000;
+    box-sizing: border-box;
+}
+.#{$tagkey}.#{$tagkey}-c-question-card > .#{$tagkey}-c-question-card_foot {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 18px;
+}
+.#{$tagkey}.#{$tagkey}-c-question-card > .#{$tagkey}-close {
+    cursor: pointer;
+    position: absolute;
+    right: 16px;
+    top: 10px;
+}

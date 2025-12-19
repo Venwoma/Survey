@@ -1,0 +1,47 @@
+.createBox {
+    display: flex;
+    flex-direction: column;
+    .title {
+        font-size: 28px;
+        font-weight: 500;
+        line-height: normal;
+        color: #000000;
+        text-align: center;
+    }
+    .createInput {
+        width: 925px;
+        height: 187px;
+        margin-top: 51px;
+    }
+    .suggestionTips {
+        margin-top: 24px;
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 28px;
+        color: rgba(0, 0, 0, 0.6);
+        text-align: center;
+    }
+    .suggestion {
+        cursor: pointer;
+        margin-top: 12px;
+        width: 925px;
+        height: 48px;
+        border-radius: 8px;
+        text-align: center;
+        padding: 0px 24px;
+        background: #ebf5ff;
+
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 48px;
+        color: #1f2937;
+        border: 1px solid transparent;
+        &:hover {
+            background: #e3f1ff;
+            border: 1px solid #4f46e5;
+        }
+    }
+    .suggestActive {
+        opacity: 0.4;
+    }
+}

@@ -1,0 +1,21 @@
+@use './vars.scss' as *;
+
+.#{$tagkey}-title {
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: 0px;
+    font-feature-settings: 'kern' on;
+    color: #000000;
+}
+.#{$tagkey}-subtitle {
+    margin-top: 4px;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+    letter-spacing: 0px;
+    font-feature-settings: 'kern' on;
+    color: rgba(0, 0, 0, 0.6);
+}

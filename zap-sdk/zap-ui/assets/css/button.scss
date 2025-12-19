@@ -1,0 +1,44 @@
+@use './vars.scss' as *;
+
+/* 通用按钮*/
+.#{$tagkey}-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 32px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 84px;
+    padding: 6px 12px;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 18px;
+    letter-spacing: 0em;
+    font-variation-settings: 'opsz' auto;
+    user-select: none;
+}
+.#{$tagkey}-button:not(.#{$tagkey}-button.#{$tagkey}-button-text):hover {
+    border: 1px solid rgb(64, 150, 255);
+}
+.#{$tagkey}-button ~ .#{$tagkey}-button {
+    margin-left: 4px;
+}
+.#{$tagkey}-button.#{$tagkey}-button-text {
+    font-size: 14px;
+    height: 20px;
+    width: 8px;
+    height: unset;
+    border: unset;
+    border-radius: unset;
+}
+/* 按钮*/
+.#{$tagkey}-button.#{$tagkey}-button-dark {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+.#{$tagkey}-button.#{$tagkey}-button-primary {
+    background: #4f46e5;
+    color: #ffffff;
+}

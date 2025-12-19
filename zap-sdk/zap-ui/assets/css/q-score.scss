@@ -1,0 +1,271 @@
+@use './vars.scss' as *;
+// 得分题目
+.#{$tagkey}.#{$tagkey}-score {
+    position: relative;
+    user-select: none;
+    .score-group {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &.#{$tagkey}.#{$tagkey}-score-emoji {
+        // 抖动加载
+        @keyframes dousloin {
+            0%,
+            100% {
+                transform: translateX(0) scale(1) rotate(0deg);
+            }
+            5% {
+                transform: scale(0.8);
+            }
+            15%,
+            35%,
+            55%,
+            75% {
+                transform: translate(5px, -5px) scale(1.05) rotate(-5deg);
+            }
+            25%,
+            45%,
+            65%,
+            85% {
+                transform: translate(2px, -2px) scale(1.05) rotate(5deg);
+            }
+        }
+
+        .#{$tagkey}-radio {
+            .score-img {
+                display: inline-block;
+                width: 50px;
+                height: auto;
+                &:last-of-type {
+                    animation: dousloin 0.3s ease-in-out both;
+                    display: none;
+                }
+            }
+            &:has(input:checked) {
+                .score-img {
+                    &:first-of-type {
+                        display: none;
+                    }
+                    &:last-of-type {
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+    }
+    // 的分体 star 类型
+    &.#{$tagkey}-score-star {
+        @keyframes starAanimation {
+            0%,
+            100% {
+                transform: unset;
+            }
+            10% {
+                transform: translate(-2px, -3px) scale(0.5);
+            }
+            20% {
+                transform: translate(2px, -2px) scale(0.5);
+            }
+            30%,
+            70%,
+            90% {
+                transform: rotate(-5deg) translate(-2px, -2px) scale(1);
+            }
+            40%,
+            80% {
+                transform: rotate(5deg) translate(2px, -2px) scale(1);
+            }
+        }
+        .#{$tagkey}-radio {
+            position: relative;
+            .score-img {
+                display: inline-block;
+                width: 50px;
+                height: auto;
+            }
+            .score-checked {
+                display: none;
+                animation: starAanimation 0.4s ease-in-out both;
+            }
+
+            // 悬浮出现的star
+            & > .score-img-hover {
+                position: absolute;
+                width: 50px;
+                height: auto;
+                left: 0;
+                display: none;
+            }
+            &.active {
+                & > .score-img-hover {
+                    display: unset;
+                }
+            }
+            &.ischecked {
+                .score-img-dark {
+                    display: none;
+                }
+                & > .score-checked {
+                    display: unset;
+                }
+                & > .score-img-hover {
+                    display: none;
+                }
+            }
+        }
+    }
+    .score-footer {
+        font-family: Roboto;
+        font-size: 12px;
+        font-weight: normal;
+        line-height: 20px;
+        letter-spacing: 0px;
+        font-feature-settings: 'kern' on;
+        color: rgba(0, 0, 0, 0.8);
+    }
+}
+
+/*Nps 题目*/
+
+.#{$tagkey}-score-nps {
+    // 变量定义
+    position: relative;
+    .score-nps-content {
+        $top: 6px;
+        $background: #d8d8d8;
+        position: relative;
+        width: 100%;
+        height: 76px;
+        box-sizing: border-box;
+        user-select: none;
+        margin-top: 24px;
+        &::before {
+            content: '';
+            width: 100%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            position: absolute;
+            top: $top;
+            transform: translateY(-50%);
+            background: $background;
+        }
+        // 蓝色线轴
+        .score-line {
+            width: 0%;
+            height: 2px;
+            background: #4f46e5;
+            transition: width 0.3s linear;
+            position: absolute;
+            top: $top;
+            transform: translateY(-50%);
+        }
+        // 标记点圈容器
+        .pointer-list-wrap {
+            position: absolute;
+            width: 100%;
+            height: 12px;
+            @keyframes changeBigAnim {
+                0%,
+                100% {
+                    transform: translateX(-50%) scale(1);
+                    transform-origin: 50% 50%;
+                }
+                50% {
+                    transform: translateX(-50%) scale(1.4);
+                }
+            }
+            @keyframes changeBigAnim-left {
+                0%,
+                100% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.4);
+                }
+            }
+            @keyframes changeBigAnim-right {
+                0%,
+                100% {
+                    transform: translateX(-100%) scale(1);
+                }
+                50% {
+                    transform: translateX(-100%) scale(1.4);
+                }
+            }
+
+            .pointer {
+                position: absolute;
+                display: inline-block;
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                top: 0;
+                background: $background;
+                user-select: none;
+                &:nth-child(n + 2) {
+                    transform: translateX(-50%);
+                }
+                &:last-child {
+                    transform: translateX(-100%);
+                }
+                &.active {
+                    background: #4f46e5;
+                    transform-origin: center;
+                    transition: all 0.2s ease-in-out;
+                }
+                &.active-anim {
+                    transform-origin: center;
+                    animation: changeBigAnim 0.5s linear;
+                    // transform: translateX(-50%) scale(1.2);
+                    &:first-of-type {
+                        animation: changeBigAnim-left 0.5s linear;
+                        // transform: scale(1.2);
+                    }
+                    &:last-of-type {
+                        // transform: translateX(-100%) scale(1.2);
+                        animation: changeBigAnim-right 0.5s linear;
+                    }
+                }
+            }
+        }
+        .pointer-list-text-wrap {
+            width: 100%;
+            position: absolute;
+            .pointer-text {
+                position: absolute;
+                font-family: Roboto;
+                font-size: 12px;
+                font-weight: normal;
+                line-height: 20px;
+                align-items: center;
+                letter-spacing: 0px;
+                font-feature-settings: 'kern' on;
+                color: rgba(0, 0, 0, 0.8);
+                user-select: none;
+                display: none;
+                &:nth-of-type(n + 2) {
+                    transform: translateX(-50%);
+                }
+                &:first-of-type {
+                    display: flex;
+                }
+                &:last-of-type {
+                    display: flex;
+                    transform: translateX(-100%);
+                }
+                &.active {
+                    display: flex;
+                    color: #4f46e5;
+                }
+            }
+        }
+    }
+
+    .score-footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+}
