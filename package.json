@@ -16,6 +16,7 @@
     },
     "dependencies": {
         "@ant-design/v5-patch-for-react-19": "^1.0.3",
+        "@icon-park/react": "^1.4.2",
         "@kyol/usejs": "^0.1.12",
         "antd": "^5.26.7",
         "axios": "^1.10.0",

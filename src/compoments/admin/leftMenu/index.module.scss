@@ -3,10 +3,11 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    
     .logo {
-        width: 62px;
-        height: 62px;
-        background: rgb(68, 140, 241);
+        width: auto;
+        height: 58px;
+        margin-top: 10px;
     }
     .buttonGroup {
         margin-top: 46px;
@@ -29,7 +30,7 @@
             .buttonIcon {
                 width: 30px;
                 height: 30px;
-                background: #000;
+                background:white;
             }
             .buttonName {
                 width: 140px;
@@ -42,6 +43,9 @@
             }
         }
         .createButton {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
             margin-left: 12px;
             margin-top: 16px;
             width: 40px;
@@ -49,6 +53,9 @@
             border-radius: 20px;
             background: #4f46e5;
             cursor: pointer;
+        }
+        .icon {
+            display: block;
         }
         .collapsedButton {
             width: 64px;
@@ -61,22 +68,54 @@
         }
     }
 
+    
+
     .userInfo {
-        flex: 1;
-        width: 64px;
+        //flex: 1;
+        width: 140px;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: flex-end;
         align-items: center;
-        margin-bottom: 16px;
+        margin-top: auto;
+        margin-bottom: 15px;
+        
+        gap:20px;
+        
+
         .avatar {
             width: 56px;
             height: 56px;
             border-radius: 28px;
-            background: rgb(93, 172, 247);
+            background: rgb(201, 221, 239);
+            
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+        .userBase {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
         .userName {
-            margin-top: 14px;
+            margin-top: 5px;
+            font-size: 14px;
+            font-weight: 1000;
+            color: #333;
+            line-height: 1.2;
+        }
+
+        .userCount {
+            margin-top: 4px;
+            font-size: 12px;
+            color: #999;
+        }
+        .userAction {
+           
+            margin-top: 12px;
         }
     }
 }

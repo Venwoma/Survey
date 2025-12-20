@@ -1,6 +1,8 @@
 import { Table, Menu, Dropdown, Input } from 'antd';
 import table from './index.module.scss';
 import { useState } from 'react';
+import { Write,TrendTwo } from '@icon-park/react';
+import { MoreOutlined } from '@ant-design/icons';
 export default function ZTable() {
     // 表头
     const columns = [
@@ -10,7 +12,7 @@ export default function ZTable() {
             key: 'title',
             render: (text, record) => (
                 <div className={table.titleBox}>
-                    <div className={table.leftIcon}></div>
+                    
                     <div className={table.rightContent}>
                         {record.isRename ? (
                             <Input
@@ -60,8 +62,12 @@ export default function ZTable() {
             key: 'actions',
             render: (text, record) => (
                 <div className={table.actionBox}>
-                    <div className={table.actionButton}></div>
-                    <div className={table.actionButton}></div>
+                    <div className={table.actionButton}>
+                        <Write theme="outline" size="18" fill="#333"/>
+                    </div>
+                    <div className={table.actionButton}>
+                        <TrendTwo theme="outline" size="18" fill="#333"/>
+                    </div>
                     <Dropdown
                         overlay={
                             <Menu
@@ -88,10 +94,13 @@ export default function ZTable() {
                                     },
                                 ]}
                             ></Menu>
+                            
                         }
                         trigger={['click']}
                     >
-                        <div className={table.actionButton}></div>
+                        <div className={table.actionButton}> 
+                            <MoreOutlined style={{ fontSize: 18, cursor: 'pointer' }} />
+                        </div>
                     </Dropdown>
                 </div>
             ),

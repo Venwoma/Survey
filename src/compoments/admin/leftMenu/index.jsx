@@ -1,18 +1,20 @@
-import { Tooltip } from 'antd';
+import { Tooltip,Button } from 'antd';
 import menu from './index.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { commonStore } from '@/store/index.jsx';
+import { SettingOne, System,InboxIn,PlusCross,User  } from '@icon-park/react';
+import logoImg from '@/assets/images/logo.png';
+
 export default function LeftMenu() {
     const navigate = useNavigate();
     const buttonList = [
-        { key: 'surveys', name: 'Surveys', icon: '', route: '/admin' },
-        { key: 'analytics', name: 'Analytics', icon: '', route: '/admin/analyses' },
-        { key: 'instalation', name: 'Instalation', icon: '', route: '/user-center/instalation' },
-        { key: 'setting', name: 'Setting', icon: '', route: '/' },
+        { key: 'surveys', name: 'Surveys',  icon: <System theme="outline" size="30" fill="#333"/>, route: '/admin' },
+        { key: 'instalation', name: 'Instalation', icon: <InboxIn theme="outline" size="30" fill="#333"/>, route: '/user-center/instalation' },
+        { key: 'setting', name: 'Setting', icon:  <SettingOne theme="outline" size="30" />, route: '/' },
         {
             key: 'create',
             name: '',
-            icon: '',
+            icon: <PlusCross theme="filled" size="16" fill="white" className="icon" / >,
             class: 'createButton',
             route: '/admin/create',
         },
@@ -28,7 +30,9 @@ export default function LeftMenu() {
 
     return (
         <div className={menu.menuBox}>
-            <div className={menu.logo}></div>
+            <div className={menu.logo}>
+                <img src={logoImg} alt="logo" />
+            </div>
             <div className={menu.buttonGroup}>
                 {buttonList.map((button) => (
                     <Tooltip key={button.key} placement="right" title={showAdminLeft ? null : button.name}>
@@ -36,15 +40,29 @@ export default function LeftMenu() {
                             className={button.class ? `${menu[button.class]}` : `${menu.button} ${!showAdminLeft && menu.collapsedButton}`}
                             onClick={() => handleClickButton(button)}
                         >
-                            <div className={menu.buttonIcon}></div>
+                            <div className={menu.buttonIcon}>{button.icon}</div>
                             <span className={menu.buttonName}>{button.name}</span>
                         </div>
                     </Tooltip>
                 ))}
             </div>
             <div className={menu.userInfo}>
-                <div className={menu.avatar}></div>
-                <div className={menu.userName}>Judy</div>
+                <div className={menu.avatar}>
+                    <User theme="outline" size="40" fill="#33333369"/>
+                </div>
+                <div className={menu.userBase}>
+                    <div className={menu.userName}>Judy</div>
+                    <div className={menu.userCount}>12 Projects</div>
+                </div>
+            </div>
+            <div className={menu.userAction}>
+                <Button
+                    type="primary"
+                    block
+                    onClick={() => navigate('/profile')}
+                >
+                    Manage Plan
+                </Button>
             </div>
         </div>
     );
