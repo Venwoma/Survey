@@ -1,0 +1,150 @@
+// 当前套餐组件 全局样式
+.current-plan-container {
+  width: 100%;
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+
+  // 标题样式
+  .current-plan-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 24px 0;
+    line-height: 1.2;
+  }
+
+  // 套餐卡片样式
+  .plan-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    background-color: #f9fafb;
+    border-radius: 8px;
+    margin-bottom: 28px;
+
+    .plan-info {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+
+      .plan-icon {
+        font-size: 28px;
+        color: #818cf8;
+      }
+
+      .plan-text {
+        .plan-name {
+          font-size: 18px;
+          font-weight: 600;
+          color: #1f2937;
+          margin-bottom: 4px;
+        }
+
+        .plan-desc {
+          font-size: 14px;
+          color: #6b7280;
+        }
+      }
+    }
+
+    .manage-plan-btn {
+      background-color: #4f46e5;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 20px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: #4338ca;
+        color: #fff;
+      }
+    }
+  }
+
+  // 统计数据行样式
+  .stats-row {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 28px;
+    width: 100%;
+
+    .stat-item {
+      flex: 1;
+
+      .stat-label {
+        font-size: 12px;
+        color: #9ca3af;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 8px;
+      }
+
+      .stat-value {
+        font-size: 16px;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 10px;
+      }
+
+      // 进度条样式
+      .progress-bar-wrap {
+        width: 100%;
+        height: 6px;
+        background-color: #e5e7eb;
+        border-radius: 3px;
+        overflow: hidden;
+
+        .progress-bar {
+          height: 100%;
+          background-color: #c7d2fe;
+          border-radius: 3px;
+          transition: width 0.3s ease;
+        }
+      }
+    }
+  }
+
+  // 权益列表样式
+  .benefits-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 32px;
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.5;
+
+    .benefit-item {
+      white-space: nowrap;
+    }
+  }
+}
+
+// 响应式适配：小屏幕下布局自适应
+@media (max-width: 768px) {
+  .current-plan-container {
+    .plan-card {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+
+      .manage-plan-btn {
+        width: 100%;
+      }
+    }
+
+    .stats-row {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .benefits-list {
+      gap: 12px 20px;
+    }
+  }
+}

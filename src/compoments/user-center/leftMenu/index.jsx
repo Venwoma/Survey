@@ -8,10 +8,11 @@ export default function LeftMenu() {
     const buttonList = [
         
         { key: 'my-account', name: 'My Account', route: '/user-center' },
-        { key: 'project-setting', name: 'Project Setting', route: '/admin/analyses' },
-        { key: 'instalation', name: 'Instalation', route: '/' },
-        { key: 'plan&billing', name: 'Plan & Billing', route: '/' },
+        { key: 'project-setting', name: 'Project Setting', route: '/user-center/project-setting' },
+        { key: 'instalation', name: 'Instalation', route: '/user-center/instalation' },
+        { key: 'plan&billing', name: 'Plan & Billing', route: '/user-center/plan-billing' },
     ];
+    
 
     return (
         <div className={styles.menuBox}>
