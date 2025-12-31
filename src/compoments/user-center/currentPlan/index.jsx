@@ -1,6 +1,6 @@
 import { Button } from 'antd';
-import { DiamondOutlined } from '@ant-design/icons';
-import './index.module.scss'
+import DiamondOutlined from '@ant-design/icons';
+import styles from'./index.module.scss'
 
 export default function CurrentPlan() {
   return (
