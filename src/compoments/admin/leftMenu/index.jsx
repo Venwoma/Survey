@@ -2,7 +2,7 @@ import { Tooltip,Button } from 'antd';
 import menu from './index.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { commonStore } from '@/store/index.jsx';
-import { SettingOne, System,InboxIn,PlusCross,User  } from '@icon-park/react';
+import { SettingOne, System,InboxIn,PlusCross,User,ShoppingBagOne  } from '@icon-park/react';
 import logoImg from '@/assets/images/logo.png';
 
 export default function LeftMenu() {
@@ -11,6 +11,7 @@ export default function LeftMenu() {
         { key: 'surveys', name: 'Surveys',  icon: <System theme="outline" size="30" fill="#333"/>, route: '/admin' },
         { key: 'instalation', name: 'Instalation', icon: <InboxIn theme="outline" size="30" fill="#333"/>, route: '/user-center/instalation' },
         { key: 'setting', name: 'Setting', icon:  <SettingOne theme="outline" size="30" />, route: '/' },
+        { key: 'plan&billing', name: 'Plan & Billing', icon:  <ShoppingBagOne theme="outline" size="30" fill="#333"/>, route: '/' },
         {
             key: 'create',
             name: '',
@@ -50,11 +51,14 @@ export default function LeftMenu() {
                 <div className={menu.avatar}>
                     <User theme="outline" size="40" fill="#33333369"/>
                 </div>
+                {showAdminLeft && (
                 <div className={menu.userBase}>
                     <div className={menu.userName}>Judy</div>
                     <div className={menu.userCount}>12 Projects</div>
                 </div>
+                )}
             </div>
+            {showAdminLeft && (
             <div className={menu.userAction}>
                 <Button
                     type="primary"
@@ -64,6 +68,7 @@ export default function LeftMenu() {
                     Manage Plan
                 </Button>
             </div>
+            )}
         </div>
     );
 }

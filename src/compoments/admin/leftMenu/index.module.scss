@@ -46,16 +46,19 @@
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            margin-left: 12px;
-            margin-top: 16px;
+            margin: 15px 0 0 12px;
             width: 40px;
             height: 40px;
-            border-radius: 20px;
+            border-radius: 50%;
             background: #4f46e5;
             cursor: pointer;
+            border: none;
+            padding: 0;
         }
         .icon {
-            display: block;
+            flex-shrink: 0; /* 防止图标被压缩变形 */
+            padding: 0;
+            margin: 0;
         }
         .collapsedButton {
             width: 64px;
