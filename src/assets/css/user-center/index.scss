@@ -1,4 +1,3 @@
-
 .user-center-container {
   width: 100%;
   min-height: 100vh; 
@@ -6,39 +5,50 @@
   box-sizing: border-box; 
   display: flex;
   flex-direction: column; 
+  background-color: rgba(169, 243, 247, 0.227);
 }
 
 
 .user-content-wrapper {
   display: flex;
-  width: 100%;
   flex: 1;
   gap: 0px; 
 }
 
-/* 左侧菜单样式 */
+
 .user-left-menu {
-  width: 262px;
+  width: 252px;
   flex-shrink: 0;
   background: #f8f9fa; /* 浅背景色，区分菜单区 */
   border-radius: 8px;
   padding: 0px;
 }
 
-/* 右侧内容样式 */
+
 .user-right-content {
-  flex: 1;
-  background: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* 轻微阴影，提升质感 */
+  margin-top: 60px;
+  margin-left: 15px;
+  width: 85%;
+
+  padding: 24px;
+ 
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  
 }
 
-/* 内容卡片样式美化 */
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
 .content-card h3 {
   margin: 0 0 16px 0;
   color: #333;
-  font-size: 18px;
+  font-size: 20px;
 }
 .content-card p {
   line-height: 1.8;

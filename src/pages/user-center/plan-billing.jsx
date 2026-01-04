@@ -1,7 +1,7 @@
 import { commonStore } from '../../store';
 import Leftmenu from '../../compoments/user-center/leftMenu';
 import CurrentPlan from '../../compoments/user-center/currentPlan';
-
+import BillingDetails from '../../compoments/user-center/billingDetails';
 
 export default function UserCenterPlanBilling() {
     const messageApi = commonStore((state) => state.messageApi);
@@ -16,8 +16,18 @@ export default function UserCenterPlanBilling() {
                 
                 <div className="user-right-content">
 
-                    <CurrentPlan />
-                    <BillingDetails/ >
+                    <div className="card">
+
+                        <CurrentPlan />
+
+                    </div>
+                    
+                    <div className="card">
+
+                        <BillingDetails />
+
+                    </div>
+                   
 
                 </div>
             </div>

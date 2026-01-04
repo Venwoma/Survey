@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  background-color: rgba(169, 243, 247, 0.227);
 }
 
 .buttonGroup {
@@ -13,12 +14,12 @@
 }
 
 .button {
-  width: 214px;
+  width: 200px;
   height: 64px;
   border-radius: 10px;
   display: flex;
   align-items: center;
-  padding-left: 24px;
+  //padding-left: 24px;
   background: #ffffff;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
@@ -28,12 +29,7 @@
   }
 }
 
-.buttonIcon {
-  width: 30px;
-  height: 30px;
-  background: #000;
-  border-radius: 6px;
-}
+
 
 .buttonName {
   width: 140px;
