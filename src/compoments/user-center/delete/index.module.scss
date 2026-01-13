@@ -1,0 +1,128 @@
+.container{
+    border-radius: 8px; 
+    background-color: white;
+    padding: 30px;
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap:24px;
+
+    font-size: 16px;
+    color: blue;
+
+    cursor: pointer;
+
+}
+
+// 弹窗遮罩层（核心：fixed 定位 + 全屏覆盖）
+.modalOverlay {
+  position: fixed !important; // 强制固定定位，脱离文档流
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background-color: rgba(0, 0, 0, 0.6) !important; // 半透明黑色遮罩
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 9999 !important; // 极高层级，确保在所有内容上方
+  margin: 0 !important; // 清除默认边距
+  padding: 0 !important; // 清除默认内边距
+}
+
+// 弹窗内容区（居中显示）
+.modalContent {
+  width: 500px;
+  max-width: 90vw; // 适配移动端
+  background: #ffffff !important;
+  border-radius: 8px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative; // 相对定位，确保内部元素正常布局
+  padding: 0 !important; // 清除默认内边距
+}
+
+// 弹窗头部
+.modalHeader {
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+    font-weight: 600;
+  }
+  .closeBtn {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      color: #ff4d4f;
+      background: #fef0f0;
+      border-radius: 50%;
+    }
+  }
+}
+
+// 弹窗主体
+.modalBody {
+  font-size: 16px;
+  padding: 20px;
+  p {
+    line-height: 1.6;
+    color: black;
+    margin: 0 0 12px 0;
+  }
+  
+  .modalheight{
+    color: #ff4d4f;
+  }
+
+  
+}
+
+// 弹窗底部
+.modalFooter {
+  padding: 16px 20px;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  .cancelBtn {
+    padding: 8px 16px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 10px;
+    &:hover {
+      background: #f5f5f5;
+      border-color: #bfbfbf;
+    }
+  }
+  .deleteBtn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background: blue;
+    color: #fff;
+    cursor: pointer;
+    font-size: 10px;
+    &:hover {
+      background: rgba(0, 0, 255, 0.738);
+    }
+  }
+}

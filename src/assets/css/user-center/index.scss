@@ -1,6 +1,6 @@
 .user-center-container {
   width: 100%;
-  min-height: 100vh; 
+  height: 100vh; 
   padding: 0px;
   box-sizing: border-box; 
   display: flex;
@@ -13,6 +13,7 @@
   display: flex;
   flex: 1;
   gap: 0px; 
+  overflow: hidden;
 }
 
 
@@ -22,19 +23,21 @@
   background: #f8f9fa; /* 浅背景色，区分菜单区 */
   border-radius: 8px;
   padding: 0px;
+  flex-shrink: 0;
 }
 
 
 .user-right-content {
   margin-top: 60px;
-  margin-left: 15px;
+  margin-left: 0px;
   width: 85%;
 
-  padding: 24px;
+  padding: 24px 24px 24px 0px;
  
   display: flex;
   flex-direction: column;
   gap: 24px;
+  overflow-y: auto;
   
 }
 

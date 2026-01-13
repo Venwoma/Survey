@@ -1,0 +1,75 @@
+.container {
+  width: 100%;
+  border-radius: 8px;
+  background-color: white;
+  height: auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+
+  }
+
+  .accountList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .accountItem {
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      transition: border-color 0.2s;
+
+      &:hover {
+        border-color: #ccc;
+      }
+
+      // 调整图标块的间距，移除原字体大小
+      .accountIcon {
+        margin-right: 12px;
+        flex-shrink: 0; // 防止方块被挤压
+      }
+
+      .accountInfo {
+        flex: 1;
+
+        .accountName {
+          font-weight: 600;
+          margin: 0 0 4px 0;
+          font-size: 16px;
+        }
+
+        .accountDesc {
+          color: #666;
+          font-size: 14px;
+          margin: 0;
+        }
+      }
+
+      .accountBtn {
+        padding: 6px 12px;
+        border: 0px solid #ccc;
+        border-radius: 4px;
+        width: 115px;
+        height: 40px;
+        background: #f5f5f5;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 550;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: #eee;
+        }
+      }
+    }
+  }
+}
