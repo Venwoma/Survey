@@ -1,11 +1,11 @@
 import '../../assets/css/user-center/index.scss'
-import { commonStore } from '../../store';
-import Header from '../../compoments/admin/header'; 
+import { commonStore } from '../../store'; 
 import Leftmenu from '../../compoments/user-center/leftMenu';
 import ProFile from '../../compoments/user-center/proFile';
 import SignIn from '../../compoments/user-center/sign-in'
 import Accounts from '../../compoments/user-center/accounts';
 import DeleteAccount from '../../compoments/user-center/delete';
+
 
 export default function UserCenterIndex() {
     const messageApi = commonStore((state) => state.messageApi);
@@ -64,10 +64,8 @@ export default function UserCenterIndex() {
                     </div>
                     <div>
                         <DeleteAccount />
+                        
                     </div>
-
-                    
-
                     
                 </div>
             </div>

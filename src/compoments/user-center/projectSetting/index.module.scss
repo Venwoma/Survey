@@ -1,0 +1,95 @@
+.container{
+    width:100%;
+    border-radius: 8px; 
+    background-color: white;
+    height:600px;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap:24px;
+
+   .title {
+    font-size: 20px;
+    font-weight: 600;
+    //margin-bottom: 16px;
+}
+
+    .title2{
+            color: rgb(192, 193, 193);
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+    .planCard {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px;
+        border: 1px solid #f0f0f0;
+        border-radius: 8px;
+        background-color:white;
+        width: 100%;
+        height:150px;
+        
+
+        .planInfo {
+        display: flex;
+        align-items: center;
+        }
+    }
+
+    .planIcon {
+        margin-right: 12px;
+    } 
+    .planText {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .planName {
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .planDesc {
+        font-size: 12px;
+        color: #888;
+    }
+
+    .manageBtn {
+        border-radius: 6px;
+        color: black;
+        background: #f0f0f0;
+        width: auto !important;
+        display: inline-block;
+    }
+    
+    .UpdateBt{
+        border-radius: 6px;
+        color: #fff;
+        background: #4f46e5;
+        border-color: #fff;
+        font-size: 12px;
+
+        width:100px;
+        height: 40px;
+        display: block;
+        flex-shrink: 0; /* 关键1：禁止Flex收缩，高度不被压缩 */
+        flex-grow: 0; /* 关键2：禁止Flex拉伸，保持固定宽度 */
+        box-sizing: border-box; /* 关键3：高度包含边框/内边距，精准生效 */
+
+    }
+
+     .customHr {
+        border: none;
+        height: 1px; /* 核心：必须设置高度，否则线条高度为0 */
+        background-color: #e5e7eb; /* 替换成你想要的颜色 */
+        width: 100%;
+        margin: 16px 0;
+        flex-shrink: 0; /* 禁止收缩，保证1px高度不被挤没 */
+        min-height: 1px; /* 兜底：强制最小高度为1px */
+    
+    }
+    
+}

@@ -19,6 +19,12 @@
     //margin-bottom: 16px;
 }
 
+.title2{
+        color: rgb(192, 193, 193);
+        font-weight: 500;
+        font-size: 16px;
+    }
+
 .planCard {
     display: flex;
     justify-content: space-between;
@@ -63,7 +69,11 @@
     border-radius: 6px;
     color: #fff;
     background: #4f46e5;
+    width: auto !important;
+    display: inline-block;
 }
+
+
 
 .statsRow {
     display: flex;
