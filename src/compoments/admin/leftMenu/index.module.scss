@@ -3,14 +3,14 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    
+
     .logo {
         width: auto;
         height: 58px;
         margin-top: 10px;
         display: flex;
 
-        .logoImg{
+        .logoImg {
             width: 48px;
             height: 48px;
         }
@@ -18,10 +18,9 @@
             margin-left: auto !important;
             margin-right: auto !important;
         }
-        .logoName{
+        .logoName {
             height: 45px;
         }
-
     }
     .buttonGroup {
         margin-top: 46px;
@@ -44,7 +43,7 @@
             .buttonIcon {
                 width: 30px;
                 height: 30px;
-                background:white;
+                background: white;
             }
             .buttonName {
                 width: 140px;
@@ -75,20 +74,15 @@
             margin: 0;
         }
         .collapsedButton {
-            
             width: 64px;
             padding-left: 17px;
-            .buttonName{
+            .buttonName {
                 width: 0px;
                 overflow: hidden;
                 margin-left: 0px;
             }
-
-            
         }
     }
-
-    
 
     .userInfo {
         //flex: 1;
@@ -99,31 +93,24 @@
         align-items: center;
         margin-top: auto;
         margin-bottom: 15px;
-        
-        gap:20px;
-        
+        gap: 20px;
 
         .avatar {
             width: 56px;
             height: 56px;
             border-radius: 28px;
             background: rgb(201, 221, 239);
-            
-            
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        
         .userBase {
             display: flex;
             flex-direction: column;
             justify-content: center;
-
-            
         }
-        
+
         .userName {
             margin-top: 5px;
             font-size: 14px;
@@ -138,51 +125,48 @@
             color: #999;
         }
         .userAction {
-           
             margin-top: 12px;
         }
-        
-        .collapsedUse{
-            display: hide;
+
+        .collapsedUse {
+            display: none;
         }
-        
     }
 
     .tip {
         width: 180px;
         padding: 8px 12px;
-        
+
         .tipUser {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
         }
 
         // 用户名样式
         .tipUserName {
-        font-weight: 500;
+            font-weight: 500;
         }
 
         // 套餐文字样式
         .tipPlan {
-        font-size: 12px;
-        color: #666;
-        span {
-            color: #1677ff;
-        }
+            font-size: 12px;
+            color: #666;
+            span {
+                color: #1677ff;
+            }
         }
 
         // 操作选项区域
         .tipOptions {
-        font-size: 14px;
-        line-height: 28px;
+            font-size: 14px;
+            line-height: 28px;
         }
 
         // 登出文字样式
         .tipLogout {
-        color: #ff4d4f;
+            color: #ff4d4f;
         }
-
     }
 }
