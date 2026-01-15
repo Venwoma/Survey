@@ -8,6 +8,20 @@
         width: auto;
         height: 58px;
         margin-top: 10px;
+        display: flex;
+
+        .logoImg{
+            width: 48px;
+            height: 48px;
+        }
+        .logoImgCollapsed {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+        .logoName{
+            height: 45px;
+        }
+
     }
     .buttonGroup {
         margin-top: 46px;
@@ -61,13 +75,16 @@
             margin: 0;
         }
         .collapsedButton {
+            
             width: 64px;
             padding-left: 17px;
-            .buttonName {
+            .buttonName{
                 width: 0px;
                 overflow: hidden;
                 margin-left: 0px;
             }
+
+            
         }
     }
 
@@ -97,10 +114,14 @@
             align-items: center;
             justify-content: center;
         }
+
+        
         .userBase {
             display: flex;
             flex-direction: column;
             justify-content: center;
+
+            
         }
         
         .userName {
@@ -120,5 +141,48 @@
            
             margin-top: 12px;
         }
+        
+        .collapsedUse{
+            display: hide;
+        }
+        
+    }
+
+    .tip {
+        width: 180px;
+        padding: 8px 12px;
+        
+        .tipUser {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 8px;
+        }
+
+        // 用户名样式
+        .tipUserName {
+        font-weight: 500;
+        }
+
+        // 套餐文字样式
+        .tipPlan {
+        font-size: 12px;
+        color: #666;
+        span {
+            color: #1677ff;
+        }
+        }
+
+        // 操作选项区域
+        .tipOptions {
+        font-size: 14px;
+        line-height: 28px;
+        }
+
+        // 登出文字样式
+        .tipLogout {
+        color: #ff4d4f;
+        }
+
     }
 }

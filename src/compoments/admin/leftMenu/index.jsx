@@ -3,15 +3,16 @@ import menu from './index.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { commonStore } from '@/store/index.jsx';
 import { SettingOne, System,InboxIn,PlusCross,User,ShoppingBagOne  } from '@icon-park/react';
-import logoImg from '@/assets/images/logo.png';
+import logoImg from '@/assets/images/logo-img.png';
+import logoName from '@/assets/images/logo-name.png';
 
 export default function LeftMenu() {
     const navigate = useNavigate();
     const buttonList = [
         { key: 'surveys', name: 'Surveys',  icon: <System theme="outline" size="30" fill="#333"/>, route: '/admin' },
         { key: 'instalation', name: 'Instalation', icon: <InboxIn theme="outline" size="30" fill="#333"/>, route: '/user-center/instalation' },
-        { key: 'setting', name: 'Setting', icon:  <SettingOne theme="outline" size="30" />, route: '/' },
-        { key: 'plan&billing', name: 'Plan & Billing', icon:  <ShoppingBagOne theme="outline" size="30" fill="#333"/>, route: '/' },
+        { key: 'setting', name: 'Setting', icon:  <SettingOne theme="outline" size="30" />, route: '/user-center/project-setting' },
+        { key: 'plan&billing', name: 'Plan & Billing', icon:  <ShoppingBagOne theme="outline" size="30" fill="#333"/>, route: '/user-center/plan-billing' },
         {
             key: 'create',
             name: '',
@@ -32,7 +33,17 @@ export default function LeftMenu() {
     return (
         <div className={menu.menuBox}>
             <div className={menu.logo}>
-                <img src={logoImg} alt="logo" />
+                <img src={logoImg} 
+                alt="logo" 
+                className={`${menu.logoImg} ${!showAdminLeft && menu.logoImgCollapsed}` } 
+                />
+            {showAdminLeft && (
+            <img 
+                src={logoName}  // 替换成你的第二张图片路径
+                alt="logoname" 
+                className={menu.logoName} 
+            />
+        )}
             </div>
             <div className={menu.buttonGroup}>
                 {buttonList.map((button) => (
@@ -48,16 +59,49 @@ export default function LeftMenu() {
                 ))}
             </div>
             <div className={menu.userInfo}>
-                <div className={menu.avatar}>
+                <Tooltip
+                placement="right"
+                title={!showAdminLeft ? (
+                    <div className={menu.tip}>
+                    {/* 顶部用户信息行 */}
+                    <div className={menu.tipUser}>
+                        <User theme="outline" size="20" fill="#33333379" />
+                        <div>
+                        <div className={menu.tipUserName}>User_google_7684</div>
+                        <div className={menu.tipPlan}>
+                            <span>Free Plan</span>
+                        </div>
+                        </div>
+                    </div>
+                    
+                    {/* 操作选项区域 */}
+                    <div className={menu.tipOptions}>
+                        <div>
+                            <Button>Account</Button>
+                        </div>
+                        <div>
+                            <Button>Plan&billing</Button>
+                        </div>
+                        <div>
+                            <Button>Logout</Button>
+                        </div>
+                    </div>
+                    </div>
+                ) : null}
+                >
+                <div className={`${menu.avatar} ${!showAdminLeft && menu.avatarCollapsed}`}>
                     <User theme="outline" size="40" fill="#33333369"/>
                 </div>
-                {showAdminLeft && (
-                <div className={menu.userBase}>
+
+                </Tooltip>
+                
+                <div className={`${menu.userBase} ${!showAdminLeft && menu.collapsedUse}`}>
                     <div className={menu.userName}>Judy</div>
                     <div className={menu.userCount}>12 Projects</div>
                 </div>
-                )}
+                
             </div>
+           
             {showAdminLeft && (
             <div className={menu.userAction}>
                 <Button
@@ -69,6 +113,7 @@ export default function LeftMenu() {
                 </Button>
             </div>
             )}
+            
         </div>
     );
 }
