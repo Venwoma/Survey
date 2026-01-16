@@ -33,6 +33,5 @@ export default defineConfig(async ({ command, mode }) => {
         VITE_APP_CDN: JSON.stringify(ENV.VITE_APP_CDN),
         VITE_APP_SDK_URL: JSON.stringify(ENV.VITE_APP_SDK_URL),
     };
-    console.log(mode, 'modemode====================');
     return buildConf;
 });

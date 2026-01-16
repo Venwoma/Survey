@@ -37,6 +37,7 @@ export default defineConfig(({ command, mode }) => {
             },
         },
         server: {
+            host: '0.0.0.0',
             proxy: {
                 '/proxy': {
                     target: ENV.VITE_BASE_URL,

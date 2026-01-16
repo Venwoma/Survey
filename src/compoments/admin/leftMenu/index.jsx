@@ -5,7 +5,7 @@ import { commonStore } from '@/store/index.jsx';
 import { SettingOne, System, InboxIn, PlusCross, User, ShoppingBagOne } from '@icon-park/react';
 import logoImg from '@/assets/images/logo-img.png';
 import logoName from '@/assets/images/logo-name.png';
-
+import { clsx } from 'clsx';
 export default function LeftMenu() {
     const navigate = useNavigate();
     const buttonList = [
@@ -16,7 +16,7 @@ export default function LeftMenu() {
         {
             key: 'create',
             name: '',
-            icon: <PlusCross theme="filled" size="16" fill="white" className="icon" />,
+            icon: <PlusCross theme="filled" size="16" fill="white" className={menu.icon} />,
             class: 'createButton',
             route: '/admin/create',
         },
@@ -42,13 +42,17 @@ export default function LeftMenu() {
                     />
                 )}
             </div>
+            {/* 中间层 导航选项 */}
             <div className={menu.buttonGroup}>
                 {buttonList.map((button) => (
-
-                    
                     <Tooltip key={button.key} placement="right" title={showAdminLeft ? null : button.name}>
                         <div
-                            className={button.class ? `${menu[button.class]}` : `${menu.button} ${!showAdminLeft && menu.collapsedButton}`}
+                            className={clsx(
+                                menu['nav-button'],
+                                `nav-button-${button.key}`,
+                                button.class ? `${menu[button.class]}` : `${menu.button}`,
+                                !showAdminLeft && menu.collapsedButton
+                            )}
                             onClick={() => handleClickButton(button)}
                         >
                             <div className={menu.buttonIcon}>{button.icon}</div>
@@ -57,6 +61,7 @@ export default function LeftMenu() {
                     </Tooltip>
                 ))}
             </div>
+            {/* 底部用户信息 */}
             <div className={menu.userInfo}>
                 <Tooltip
                     placement="right"

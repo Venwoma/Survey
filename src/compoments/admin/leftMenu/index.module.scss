@@ -69,6 +69,10 @@
             cursor: pointer;
             border: none;
             padding: 0;
+            .icon {
+                display: flex;
+                align-items: center;
+            }
         }
         .icon {
             flex-shrink: 0; /* 防止图标被压缩变形 */
