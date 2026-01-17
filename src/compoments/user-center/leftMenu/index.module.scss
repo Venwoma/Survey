@@ -1,68 +1,71 @@
 .menuBox {
-  padding: 32px 24px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  background-color: rgba(169, 243, 247, 0.227);
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: rgba(169, 243, 247, 0.227);
 }
 
 .buttonGroup {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .button {
-  width: 200px;
-  height: 64px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  //padding-left: 24px;
-  background: #ffffff;
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
+    width: 200px;
+    height: 64px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    //padding-left: 24px;
+    background: #ffffff;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
 
-  &:hover {
-    background: rgba(15, 57, 87, 0.06);
-  }
+    &:hover {
+        background: rgba(15, 57, 87, 0.06);
+    }
+    &.activeButton {
+        background-color: #e5e7eb; 
+        color: #374151; 
+        font-weight: 500; 
+        cursor: default; 
+    }
 }
 
-
-
 .buttonName {
-  width: 140px;
-  margin-left: 20px;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 20px;
-  color: #000000;
-  transition: all 0.2s ease-in-out;
+    width: 140px;
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #000000;
+    transition: all 0.2s ease-in-out;
 }
 
 /* Back 按钮样式变体*/
 .backButton {
-  background: #f5f5f5;
+    background: #f5f5f5;
 
-  .buttonIcon {
-    background: #666;
-    margin-right: 8px;
-  }
+    .buttonIcon {
+        background: #666;
+        margin-right: 8px;
+    }
 
-  .buttonName {
-    color: #666;
-    font-weight: 600;
-  }
+    .buttonName {
+        color: #666;
+        font-weight: 600;
+    }
 
-  &:hover {
-    background: rgba(0, 0, 0, 0.06);
-  }
+    &:hover {
+        background: rgba(0, 0, 0, 0.06);
+    }
 }
 .backRow {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  cursor: pointer;   // 关键
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer; // 关键
 }
-
