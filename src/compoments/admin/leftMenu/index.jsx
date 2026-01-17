@@ -34,18 +34,10 @@ export default function LeftMenu() {
         <div className={menu.menuBox}>
             <div className={menu.logo}>
                 <img src={logoImg} alt="logo" className={`${menu.logoImg} ${!showAdminLeft && menu.logoImgCollapsed}`} />
-                {showAdminLeft && (
-                    <img
-                        src={logoName} // 替换成你的第二张图片路径
-                        alt="logoname"
-                        className={menu.logoName}
-                    />
-                )}
+                {showAdminLeft && <img src={logoName} alt="logoname" className={menu.logoName} />}
             </div>
             <div className={menu.buttonGroup}>
                 {buttonList.map((button) => (
-
-                    
                     <Tooltip key={button.key} placement="right" title={showAdminLeft ? null : button.name}>
                         <div
                             className={button.class ? `${menu[button.class]}` : `${menu.button} ${!showAdminLeft && menu.collapsedButton}`}

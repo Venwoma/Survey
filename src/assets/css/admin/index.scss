@@ -9,7 +9,7 @@
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.001)), #ffffff;
         box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.1), 0px 4px 6px -1px rgba(0, 0, 0, 0.1);
         transition: all 0.2s ease-in-out;
-        // 显示左边
+
         &.show-left {
             min-height: 0;
             width: 262px;
@@ -20,9 +20,9 @@
         }
         .collapsed-button {
             position: absolute;
-            display: flex;        // 开启 Flex 布局
-            align-items: center;  // 垂直居中
-            justify-content: center; // 水平居中
+            display: flex;
+            align-items: center;
+            justify-content: center;
             top: 50%;
             left: 112px;
             cursor: pointer;
@@ -37,10 +37,10 @@
         }
     }
 
-    
     .admin-right {
         flex: 1;
         height: 100%;
+        overflow: auto;
         .index-container {
             display: flex;
             flex-direction: column;
