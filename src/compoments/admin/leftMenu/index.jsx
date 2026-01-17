@@ -1,4 +1,4 @@
-import { Tooltip, Button } from 'antd';
+import { Tooltip, Popover, Button } from 'antd';
 import menu from './index.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { commonStore } from '@/store/index.jsx';
@@ -57,13 +57,13 @@ export default function LeftMenu() {
             </div>
 
             <div className={menu.userInfo}>
-                <Tooltip
+                <Popover
                     placement="right"
                     title={
                         !showAdminLeft ? (
                             <div className={menu.tip}>
                                 <div className={menu.tipUser}>
-                                    <User theme="outline" size="20" fill="#33333379" />
+                                    <User theme="outline" size="20" fill="#33333379" className={menu.tipIcon} />
                                     <div>
                                         <div className={menu.tipUserName}>User_google_7684</div>
                                         <div className={menu.tipPlan}>
@@ -74,13 +74,19 @@ export default function LeftMenu() {
 
                                 <div className={menu.tipOptions}>
                                     <div>
-                                        <Button>Account</Button>
+                                        <Button className={menu.buttons} onClick={() => navigate('/user-center')}>
+                                            Account
+                                        </Button>
                                     </div>
                                     <div>
-                                        <Button>Plan&billing</Button>
+                                        <Button className={menu.buttons} onClick={() => navigate('/user-center/plan-billing')}>
+                                            Plan&billing
+                                        </Button>
                                     </div>
                                     <div>
-                                        <Button>Logout</Button>
+                                        <Button className={menu.buttons} onClick={() => navigate('/admin')}>
+                                            Logout
+                                        </Button>
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +96,7 @@ export default function LeftMenu() {
                     <div className={`${menu.avatar} ${!showAdminLeft && menu.avatarCollapsed}`}>
                         <User theme="outline" size="40" fill="#33333369" />
                     </div>
-                </Tooltip>
+                </Popover>
 
                 <div className={`${menu.userBase} ${!showAdminLeft && menu.collapsedUse}`}>
                     <div className={menu.userName}>Judy</div>
