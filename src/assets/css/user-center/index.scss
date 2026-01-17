@@ -1,60 +1,72 @@
 .user-center-container {
-  width: 100%;
-  height: 100vh; 
-  padding: 0px;
-  box-sizing: border-box; 
-  display: flex;
-  flex-direction: column; 
-  background-color: rgba(169, 243, 247, 0.227);
-}
+    width: 100%;
+    height: 100vh;
+    padding: 0px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(169, 243, 247, 0.227);
 
+    .user-content-wrapper {
+        display: flex;
+        flex: 1;
+        gap: 0px;
+        overflow: hidden;
 
-.user-content-wrapper {
-  display: flex;
-  flex: 1;
-  gap: 0px; 
-  overflow: hidden;
-}
+        .user-left-menu {
+            width: 252px;
+            flex-shrink: 0;
+            background: #f8f9fa; /* 浅背景色，区分菜单区 */
+            border-radius: 8px;
+            padding: 0px;
+            flex-shrink: 0;
+        }
 
+        .user-right-content {
+            margin-top: 60px;
+            margin-left: 0px;
+            width: 85%;
+            padding: 24px 24px 24px 0px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            overflow-y: auto;
+            color: black;
 
-.user-left-menu {
-  width: 252px;
-  flex-shrink: 0;
-  background: #f8f9fa; /* 浅背景色，区分菜单区 */
-  border-radius: 8px;
-  padding: 0px;
-  flex-shrink: 0;
-}
+            .title1 {
+                    font-size: 30px;
+                    font-weight: bold;
+                }
 
+            .block {
+                background-color: white;
+                border-radius: 14px;
+                padding: 30px;
+                gap:12px;
 
-.user-right-content {
-  margin-top: 60px;
-  margin-left: 0px;
-  width: 85%;
+                .content{
+                  font-size: 16px;
+                  
+                }
+                .title2{
+                  font-size: 24px;
+                  font-weight: bold;
+                  margin-top: 20px;
+                  margin-bottom: 20px;
+                
+                }
 
-  padding: 24px 24px 24px 0px;
- 
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  overflow-y: auto;
-  
-}
+                  ul {
+                    margin: 8px 0 0 0;
+                    padding-left: 24px;
+                    list-style-type: disc;
+                    line-height: 1.6;
+                    color: #374151;
+                  
+                }
 
-.card {
-  background-color: #fff;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-
-.content-card h3 {
-  margin: 0 0 16px 0;
-  color: #333;
-  font-size: 20px;
-}
-.content-card p {
-  line-height: 1.8;
-  color: #666;
-  margin: 8px 0;
+                
+            }
+        }
+    }
 }
