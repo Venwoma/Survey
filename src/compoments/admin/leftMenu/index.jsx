@@ -36,7 +36,7 @@ export default function LeftMenu() {
                 <img src={logoImg} alt="logo" className={`${menu.logoImg} ${!showAdminLeft && menu.logoImgCollapsed}`} />
                 {showAdminLeft && <img src={logoName} alt="logoname" className={menu.logoName} />}
             </div>
-            {/* 中间层 导航选项 */}
+
             <div className={menu.buttonGroup}>
                 {buttonList.map((button) => (
                     <Tooltip key={button.key} placement="right" title={showAdminLeft ? null : button.name}>
@@ -45,7 +45,7 @@ export default function LeftMenu() {
                                 menu['nav-button'],
                                 `nav-button-${button.key}`,
                                 button.class ? `${menu[button.class]}` : `${menu.button}`,
-                                !showAdminLeft && menu.collapsedButton
+                                !showAdminLeft && button.key !== 'create' && menu.collapsedButton
                             )}
                             onClick={() => handleClickButton(button)}
                         >
@@ -55,14 +55,13 @@ export default function LeftMenu() {
                     </Tooltip>
                 ))}
             </div>
-            {/* 底部用户信息 */}
+
             <div className={menu.userInfo}>
                 <Tooltip
                     placement="right"
                     title={
                         !showAdminLeft ? (
                             <div className={menu.tip}>
-                                {/* 顶部用户信息行 */}
                                 <div className={menu.tipUser}>
                                     <User theme="outline" size="20" fill="#33333379" />
                                     <div>
@@ -73,7 +72,6 @@ export default function LeftMenu() {
                                     </div>
                                 </div>
 
-                                {/* 操作选项区域 */}
                                 <div className={menu.tipOptions}>
                                     <div>
                                         <Button>Account</Button>

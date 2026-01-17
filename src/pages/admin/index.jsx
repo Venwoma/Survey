@@ -109,8 +109,11 @@ export default function AdminIndex() {
                     <ZSelect value={select.value} options={select.options} width={select.width} showPreIcon={select.showIcon}></ZSelect>
                 ))}
             </div>
-            <div className="index-table">
-                <ZTable></ZTable>
+            <div className="table-scroll-wrapper">
+                <div className="index-table">
+                    <ZTable></ZTable>
+                </div>
+
             </div>
         </div>
     );

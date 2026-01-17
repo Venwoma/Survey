@@ -1,6 +1,8 @@
 .page-admin {
     height: 100%;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: auto;
+    white-space: nowrap;
     .admin-left {
         box-sizing: border-box;
         width: 112px;
@@ -57,8 +59,65 @@
                 background: rgb(255, 255, 255);
                 gap: 16px;
             }
-            .index-table {
+            .table-scroll-wrapper {
+                overflow-x: auto;
                 margin-top: 16px;
+                border-radius: 8px;
+                background: white;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+                .index-table {
+                    margin-top: 16px;
+                }
+
+                .table-footer {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 12px 16px;
+                    border-top: 1px solid #f0f0f0;
+                    min-width: 600px; // 确保小屏幕下不被挤扁
+
+                    .count-text {
+                        font-size: 14px;
+                        color: #666;
+                    }
+
+                    .pagination {
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+
+                        .page-btn {
+                            width: 32px;
+                            height: 32px;
+                            border: 1px solid #e8e8e8;
+                            border-radius: 4px;
+                            background: white;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            cursor: pointer;
+                            transition: all 0.2s;
+
+                            &:hover:not(:disabled) {
+                                border-color: #4f46e5;
+                            }
+
+                            &.active {
+                                border-color: #4f46e5;
+                                background: #4f46e5;
+                                color: white;
+                            }
+
+                            &:disabled {
+                                border-color: #f0f0f0;
+                                color: #ccc;
+                                cursor: not-allowed;
+                            }
+                        }
+                    }
+                }
             }
         }
         .create-container {

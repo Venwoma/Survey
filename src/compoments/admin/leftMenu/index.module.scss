@@ -69,17 +69,23 @@
                 border-radius: 50%;
                 background: #4f46e5;
 
-                svg{
+                .icon {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
 
-                    display:block;
-
+                svg {
+                    display: block;
                 }
             }
         }
 
         .collapsedButton {
             width: 64px;
-            padding-left: 17px;
+            height: 64px;
+            padding-left: 14px;
+
             .buttonName {
                 width: 0px;
                 overflow: hidden;
