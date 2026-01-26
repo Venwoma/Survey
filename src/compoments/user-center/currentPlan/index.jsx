@@ -1,60 +1,50 @@
 import { Button } from 'antd';
 import { CrownOutlined } from '@ant-design/icons';
 import styles from './index.module.scss';
+import { useNavigate } from 'react-router-dom';
 
 //默认导出+函数式组件
 export default function CurrentPlan() {
+    const navigate = useNavigate();
+    const goToPlanPage = () => {
+        navigate('/plans');
+    };
+
     return (
         <div className={styles.container}>
-          
             <h2 className={styles.title}>Your Current Plan</h2>
 
-            
             <div className={styles.planCard}>
                 <div className={styles.planInfo}>
                     <CrownOutlined className={styles.planIcon} />
                     <div className={styles.planText}>
                         <div className={styles.planName}>Free Plan</div>
-                        <div className={styles.planDesc}>
-                            Basic features to get started
-                        </div>
+                        <div className={styles.planDesc}>Basic features to get started</div>
                     </div>
                 </div>
-                <Button className={styles.manageBtn}>
+                <Button className={styles.manageBtn} onClick={goToPlanPage}>
                     Manage Plan
                 </Button>
             </div>
 
-           
             <div className={styles.statsRow}>
-                
                 <div className={styles.statItem}>
-                    <div className={styles.statLabel}>
-                        SURVEYS ACTIVATED
-                    </div>
-                    <div className={styles.statValue}>
-                        0 / 10 Activated
-                    </div>
+                    <div className={styles.statLabel}>SURVEYS ACTIVATED</div>
+                    <div className={styles.statValue}>0 / 10 Activated</div>
                     <div className={styles.progressBarWrap}>
                         <div className={styles.progressBar}></div>
                     </div>
                 </div>
 
-                
                 <div className={styles.statItem}>
-                    <div className={styles.statLabel}>
-                        SURVEY DISPLAYED
-                    </div>
-                    <div className={styles.statValue}>
-                        0 / 50 Displays max
-                    </div>
+                    <div className={styles.statLabel}>SURVEY DISPLAYED</div>
+                    <div className={styles.statValue}>0 / 50 Displays max</div>
                     <div className={styles.progressBarWrap}>
                         <div className={styles.progressBar}></div>
                     </div>
                 </div>
             </div>
 
-            
             <div className={styles.benefitsRow}>
                 <div className={styles.benefitItem}>- 50 survey displays</div>
                 <div className={styles.benefitItem}>- 10 active survey slots</div>

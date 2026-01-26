@@ -5,10 +5,20 @@ import { Button } from 'antd';
 import { Mail } from '@icon-park/react';
 import clsx from 'clsx';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function UserCenterInstalation() {
     const messageApi = commonStore((state) => state.messageApi);
     const [activeFaqId, setActiveFaqId] = useState(null);
+    const [isVerifying, setIsVerifying] = useState(false);
+    const navigate = useNavigate();
+
+    const handleVerifyIntegration = () => {
+        setIsVerifying(true);
+        setTimeout(() => {
+            setIsVerifying(false);
+        }, 100);
+    };
     const toggleFaq = (id) => {
         setActiveFaqId(activeFaqId === id ? null : id);
     };
@@ -187,7 +197,21 @@ Quick Verification:
                             Save your changes. Congratulations, you have set up the script and are now ready to create surveys! Click the button and open your
                             website. We'll automatically verify if the tracking code has been successfully installed on your website.
                         </div>
-                        <Button className="button">Verify integration</Button>
+                        <div>
+                            <Button
+                                className="button"
+                                onClick={handleVerifyIntegration}
+                                disabled={isVerifying}
+                                style={{
+                                    width: 'fit-content',
+                                    padding: '8px 20px',
+                                    whiteSpace: 'nowrap',
+                                    transition: 'all 0.2s ease',
+                                }}
+                            >
+                                {isVerifying ? 'Verifying' : 'Verify integration'}
+                            </Button>
+                        </div>
                     </div>
 
                     <h1 className="title1">Support & Resources</h1>

@@ -8,6 +8,7 @@ import logoName from '@/assets/images/logo-name.png';
 import { clsx } from 'clsx';
 export default function LeftMenu() {
     const navigate = useNavigate();
+
     const buttonList = [
         { key: 'surveys', name: 'Surveys', icon: <System theme="outline" size="30" fill="#333" />, route: '/admin' },
         { key: 'instalation', name: 'Instalation', icon: <InboxIn theme="outline" size="30" fill="#333" />, route: '/user-center/instalation' },
@@ -32,7 +33,12 @@ export default function LeftMenu() {
 
     return (
         <div className={menu.menuBox}>
-            <div className={menu.logo}>
+            <div
+                className={menu.logo}
+                onClick={() => {
+                    navigate('/');
+                }}
+            >
                 <img src={logoImg} alt="logo" className={`${menu.logoImg} ${!showAdminLeft && menu.logoImgCollapsed}`} />
                 {showAdminLeft && <img src={logoName} alt="logoname" className={menu.logoName} />}
             </div>
@@ -45,7 +51,7 @@ export default function LeftMenu() {
                                 menu['nav-button'],
                                 `nav-button-${button.key}`,
                                 button.class ? `${menu[button.class]}` : `${menu.button}`,
-                                !showAdminLeft && button.key !== 'create' && menu.collapsedButton
+                                !showAdminLeft && button.key !== 'create' && menu.collapsedButton,
                             )}
                             onClick={() => handleClickButton(button)}
                         >
@@ -106,7 +112,7 @@ export default function LeftMenu() {
 
             {showAdminLeft && (
                 <div className={menu.userAction}>
-                    <Button type="primary" block onClick={() => navigate('/profile')}>
+                    <Button type="primary" block onClick={() => navigate('/user-center/plan-billing')}>
                         Manage Plan
                     </Button>
                 </div>
