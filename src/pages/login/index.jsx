@@ -81,6 +81,11 @@ export default function Index() {
     const handleClickRegister = () => {
         navigate('/login/register');
     };
+    const keepSubmit = () => {
+        httpAuthLogin().then((res) => {
+            console.log(res);
+        });
+    };
     return (
         <div className="login-page">
             <div className="login-content">
@@ -132,7 +137,7 @@ export default function Index() {
                         Forgot password?
                     </div>
                 </div>
-                <Button className="email-login-button" type="primary">
+                <Button className="email-login-button" type="primary" onClick={keepSubmit}>
                     Continue with Email
                 </Button>
                 <span className="policy-register-text">
@@ -142,7 +147,6 @@ export default function Index() {
                 <span className="policy-register-text">
                     New to insightto?
                     <span className="text-button" onClick={handleClickRegister}>
-                        {' '}
                         Create your account here
                     </span>
                 </span>
