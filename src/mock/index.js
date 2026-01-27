@@ -1,4 +1,4 @@
-import Mock from 'mockjs';
+//import Mock from 'mock.js';
 import mockData from './mock-data';
 
 const fetchMock = (type, url) => {
