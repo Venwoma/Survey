@@ -1,6 +1,6 @@
 export default {
     'POST /api/auth/jwt/login': {
-        code: 200,
+        'code|1': [200, 403],
         message: 'Login successful',
         data: {
             token: 'mock_jwt_token_123456789',
