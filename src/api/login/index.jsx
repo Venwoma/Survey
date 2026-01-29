@@ -13,3 +13,7 @@ export function httpAuthRegister(params) {
 export function httpAuthLogin(params) {
     return $post(`/api/auth/jwt/login`, params);
 }
+
+export function HttpGeyRadmon(params) {
+    return $get(`/api/random`, params);
+}
