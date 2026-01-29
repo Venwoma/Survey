@@ -24,6 +24,20 @@ export default {
             expires_in: 3600,
         },
     },
+    'POST /api/auth/register': {
+        code: 200,
+        data: {
+            token: 'mock_register_token_987654321',
+            user: {
+                id: '@id',
+                name: '@name',
+                email: '@email',
+                role: 'user',
+            },
+            expires_in: 7200,
+        },
+        message: 'Register success',
+    },
     'POST /api/admin/list': {
         data: {
             'list|10': [

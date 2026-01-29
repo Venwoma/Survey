@@ -118,9 +118,19 @@ export default function Register() {
         httpAuthRegister({
             email: email,
             password: password,
-        }).then((res) => {
-            console.log('res=====', res);
-        });
+        })
+            .then((res) => {
+                if (res.code === 200) {
+                    console.log('注册成功', res);
+                    localStorage.setItem('token', res.data.token);
+                    navigate('..');
+                } else {
+                    console.log('注册失败', res.message);
+                }
+            })
+            .catch((err) => {
+                console.log('接口异常', err);
+            });
     };
 
     return (
