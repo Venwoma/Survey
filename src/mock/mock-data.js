@@ -1,3 +1,5 @@
+//假接口数据定义
+
 export default {
     'POST /api/auth/jwt/login': {
         'code|1': [200, 403, 502],

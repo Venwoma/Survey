@@ -1,4 +1,6 @@
-//import Mock from 'mock.js';
+//mock请求函数，模拟axios
+
+import Mock from 'mockjs';
 import mockData from './mock-data';
 
 const fetchMock = (type, url) => {
