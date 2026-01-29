@@ -4,6 +4,7 @@ import { Input, Form, Checkbox, Button } from 'antd';
 import ThirdButton from '../../compoments/login/thirdButton';
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { httpAuthLogin } from '../../api/login';
+
 export default function Index() {
     const navigate = useNavigate();
     const [email, setEmail] = useState(''); // 邮箱
@@ -82,10 +83,23 @@ export default function Index() {
         navigate('/login/register');
     };
     const keepSubmit = () => {
-        httpAuthLogin().then((res) => {
-            console.log(res);
-        });
+        httpAuthLogin({ email, password })
+            .then((res) => {
+                if (res.code === 200) {
+                    console.log('登录成功', res);
+
+                    localStorage.setItem('token', res.data.token);
+
+                    navigate('/admin');
+                } else {
+                    console.log('登录失败', res.message);
+                }
+            })
+            .catch((err) => {
+                console.log('接口异常', err);
+            });
     };
+
     return (
         <div className="login-page">
             <div className="login-content">
