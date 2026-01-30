@@ -42,11 +42,26 @@ export default {
         data: {
             'list|10': [
                 {
-                    'Survey Title': '@id',
+                    title: '@id',
+                    date: function () {
+                        const type = Mock.Random.pick(['minutes', 'hours']);
+                        const value = Mock.Random.integer(1, type === 'minutes' ? 59 : 24);
+
+                        return `${value} ${type} ago`;
+                    },
                     category: '@name',
-                    'trrigers|0-10000': 10000,
-                    'Last responsed|1': ['-', 0, 1, 2, 3, 4],
-                    'Status|1': ['Status', 'Draft', 'Active'],
+                    'triggers|0-10000': 10000,
+                    responses: function () {
+                        return Mock.Random.integer(0, this.triggers);
+                    },
+                    lastResponse: function () {
+                        if (this.responses === 0) return '-';
+
+                        const type = Mock.Random.pick(['minutes', 'hours']);
+                        const value = Mock.Random.integer(1, type === 'minutes' ? 59 : 24);
+                        return `${value} ${type} ago`;
+                    },
+                    'status|1': ['Status', 'Draft', 'Active'],
                 },
             ],
         },

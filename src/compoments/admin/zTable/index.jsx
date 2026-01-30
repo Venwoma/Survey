@@ -1,9 +1,16 @@
 import { Table, Menu, Dropdown, Input } from 'antd';
 import table from './index.module.scss';
-import { useState } from 'react';
-import { Write,TrendTwo } from '@icon-park/react';
+import { Write, TrendTwo } from '@icon-park/react';
 import { MoreOutlined } from '@ant-design/icons';
+import { useState, useEffect } from 'react';
+import { message } from 'antd';
+import { httpAdminList } from '@/api/admin';
+
 export default function ZTable() {
+    useEffect(() => {
+        getTableList();
+    }, []);
+
     // 表头
     const columns = [
         {
@@ -12,7 +19,6 @@ export default function ZTable() {
             key: 'title',
             render: (text, record) => (
                 <div className={table.titleBox}>
-                    
                     <div className={table.rightContent}>
                         {record.isRename ? (
                             <Input
@@ -63,10 +69,10 @@ export default function ZTable() {
             render: (text, record) => (
                 <div className={table.actionBox}>
                     <div className={table.actionButton}>
-                        <Write theme="outline" size="18" fill="#333"/>
+                        <Write theme="outline" size="18" fill="#333" />
                     </div>
                     <div className={table.actionButton}>
-                        <TrendTwo theme="outline" size="18" fill="#333"/>
+                        <TrendTwo theme="outline" size="18" fill="#333" />
                     </div>
                     <Dropdown
                         overlay={
@@ -94,11 +100,10 @@ export default function ZTable() {
                                     },
                                 ]}
                             ></Menu>
-                            
                         }
                         trigger={['click']}
                     >
-                        <div className={table.actionButton}> 
+                        <div className={table.actionButton}>
                             <MoreOutlined style={{ fontSize: 18, cursor: 'pointer' }} />
                         </div>
                     </Dropdown>
@@ -133,41 +138,50 @@ export default function ZTable() {
         // 接口调用成功后执行
         setTableData((prev) => prev.map((item) => (item.id === rowData.id ? { ...item, title: rowData.newTitle, isRename: false } : item)));
     };
+
+    const getTableList = async () => {
+        try {
+            const res = await httpAdminList();
+            setTableData(res.data.list);
+        } catch (err) {
+            message.error('Failed to load list');
+        }
+    };
     //   表格数据
     const [tableData, setTableData] = useState([
-        {
-            id: '1',
-            title: '标题1',
-            newTitle: '标题1',
-            date: '1 hours ago',
-            category: 'Conversion Optimization',
-            triggers: 1024,
-            responses: 560,
-            lastResponse: '20 minutes ago',
-            status: 'Active',
-        },
-        {
-            id: '2',
-            title: '标题2',
-            newTitle: '标题2',
-            date: '2 hours ago',
-            category: 'Conversion Optimization',
-            triggers: 1024,
-            responses: 560,
-            lastResponse: '20 minutes ago',
-            status: 'Draft',
-        },
-        {
-            id: '3',
-            title: '标题3',
-            newTitle: '标题3',
-            date: '3 hours ago',
-            category: 'Conversion Optimization',
-            triggers: 1024,
-            responses: 560,
-            lastResponse: '20 minutes ago',
-            status: 'Paused',
-        },
+        // {
+        //     id: '1',
+        //     title: '标题1',
+        //     newTitle: '标题1',
+        //     date: '1 hours ago',
+        //     category: 'Conversion Optimization',
+        //     triggers: 1024,
+        //     responses: 560,
+        //     lastResponse: '20 minutes ago',
+        //     status: 'Active',
+        // },
+        // {
+        //     id: '2',
+        //     title: '标题2',
+        //     newTitle: '标题2',
+        //     date: '2 hours ago',
+        //     category: 'Conversion Optimization',
+        //     triggers: 1024,
+        //     responses: 560,
+        //     lastResponse: '20 minutes ago',
+        //     status: 'Draft',
+        // },
+        // {
+        //     id: '3',
+        //     title: '标题3',
+        //     newTitle: '标题3',
+        //     date: '3 hours ago',
+        //     category: 'Conversion Optimization',
+        //     triggers: 1024,
+        //     responses: 560,
+        //     lastResponse: '20 minutes ago',
+        //     status: 'Paused',
+        // },
     ]);
 
     return (

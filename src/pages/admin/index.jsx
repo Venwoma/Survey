@@ -98,11 +98,11 @@ export default function AdminIndex() {
             ],
         },
     ];
+
     return (
         <div className="index-container">
             <div className="index-header">
                 <Header title="Survey  Dashboard" buttonText="New Survey"></Header>
-                
             </div>
             <div className="index-filter">
                 {filterSelects.map((select) => (
@@ -113,7 +113,6 @@ export default function AdminIndex() {
                 <div className="index-table">
                     <ZTable></ZTable>
                 </div>
-
             </div>
         </div>
     );
