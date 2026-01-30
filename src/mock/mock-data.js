@@ -61,7 +61,7 @@ export default {
                         const value = Mock.Random.integer(1, type === 'minutes' ? 59 : 24);
                         return `${value} ${type} ago`;
                     },
-                    'status|1': ['Status', 'Draft', 'Active'],
+                    'status|1': ['Paused', 'Draft', 'Active'],
                 },
             ],
         },
