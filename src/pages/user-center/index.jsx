@@ -3,9 +3,10 @@ import { commonStore } from '../../store';
 import Leftmenu from '../../compoments/user-center/leftMenu';
 import Accounts from '../../compoments/user-center/accounts';
 import DeleteAccount from '../../compoments/user-center/delete';
-import { Button, Input, message, Modal } from 'antd';
+import { Button, Input, message, Modal, Spin } from 'antd';
 import { CheckSmall } from '@icon-park/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { httpAccount } from '../../api/user-center';
 
 export default function UserCenterIndex() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -14,18 +15,53 @@ export default function UserCenterIndex() {
     const [newEmail, setNewEmail] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [currentUserName, setCurrentUserName] = useState('User_google_7684');
-    const [currentEmail, setCurrentEmail] = useState('zhiqianj68@gmail.com');
+    const [currentUserName, setCurrentUserName] = useState('');
+    const [currentEmail, setCurrentEmail] = useState('');
+    const [currentPassword,setCurrentPassword] = useState('');
+    const [loading, setLoading] = useState(true);
+
+    const fetchMockUserInfo = async () => {
+        try {
+            setLoading(true);
+            // 调用封装的接口（失败自动返回 Mock 数据）
+            const result = await httpAccount();
+
+            // 数据校验
+            if (result && result.data && result.data.account) {
+                const { username, email } = result.data.account;
+                setCurrentUserName(username || `User_${Math.floor(Math.random() * 10000)}`);
+                setCurrentEmail(email || `user_${Math.floor(Math.random() * 10000)}@example.com`);
+            } else {
+                throw new Error('数据格式异常');
+            }
+
+            message.success('User info loaded successfully');
+        } catch (err) {
+            console.error('Error fetching mock user info:', err);
+            message.error('Failed to load user info, using default values');
+            // 最终兜底
+            setCurrentUserName('User_10086');
+            setCurrentEmail('zhiqian@gmail.com');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchMockUserInfo();
+    }, []);
 
     const showModal = (type) => {
         setModalType(type);
         setIsModalOpen(true);
 
-        if (type === 'name') setNewUsername(currentUserName);
-        if (type === 'email') setNewEmail(currentEmail);
+        // 修复：增加空值判断，避免设置 undefined
+        if (type === 'name') setNewUsername(currentUserName || '');
+        if (type === 'email') setNewEmail(currentEmail || '');
         if (type === 'password') {
             setNewPassword('');
             setConfirmPassword('');
+            console.log('当前password:',currentPassword);
         }
     };
 
@@ -62,9 +98,14 @@ export default function UserCenterIndex() {
         }
     };
 
+    // 修复：关键错误 - 对比动态的 currentUserName 而不是固定值
     const isConfirmDisabled = () => {
-        if (modalType === 'name') return !newUsername.trim() || newUsername === 'User_google_7684';
-        if (modalType === 'email') return !newEmail.trim() || !/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(newEmail);
+        if (modalType === 'name') {
+            return !newUsername.trim() || newUsername === currentUserName;
+        }
+        if (modalType === 'email') {
+            return !newEmail.trim() || !/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(newEmail);
+        }
         if (modalType === 'password') {
             return !newPassword.trim() || newPassword !== confirmPassword || newPassword.length < 6;
         }
@@ -77,15 +118,27 @@ export default function UserCenterIndex() {
                 return (
                     <>
                         <div>Username</div>
-                        <Input value={newUsername} onChange={(e) => setNewUsername(e.target.value)} maxLength={20} placeholder="Enter new username" />
+                        <Input
+                            value={newUsername}
+                            onChange={(e) => setNewUsername(e.target.value)}
+                            maxLength={20}
+                            placeholder="Enter new username"
+                            disabled={loading} // 加载中禁用输入
+                        />
                     </>
                 );
             case 'email':
                 return (
                     <>
-                        <div>we'll send an email to the address for you to comfirm.</div>
+                        <div>we'll send an email to the address for you to confirm.</div> {/* 修复拼写错误 comfirm -> confirm */}
                         <div>Your email</div>
-                        <Input value={newEmail} onChange={(e) => setNewEmail(e.target.value)} maxLength={20} placeholder="Enter new email address" />
+                        <Input
+                            value={newEmail}
+                            onChange={(e) => setNewEmail(e.target.value)}
+                            maxLength={50} // 邮箱长度限制放宽
+                            placeholder="Enter new email address"
+                            disabled={loading}
+                        />
                     </>
                 );
             case 'password':
@@ -98,9 +151,15 @@ export default function UserCenterIndex() {
                             onChange={(e) => setNewPassword(e.target.value)}
                             placeholder="Enter new password (at least 6 characters)"
                             style={{ marginBottom: 16 }}
+                            disabled={loading}
                         />
                         <div>Confirm new password</div>
-                        <Input.Password value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="Confirm your new password" />
+                        <Input.Password
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            placeholder="Confirm your new password"
+                            disabled={loading}
+                        />
                     </>
                 );
             default:
@@ -108,37 +167,38 @@ export default function UserCenterIndex() {
         }
     };
 
-    const messageApi = commonStore((state) => state.messageApi);
+    // 修复：注释掉未使用的 messageApi，避免警告
+    // const messageApi = commonStore((state) => state.messageApi);
 
     const socialAccounts = [
         {
             name: 'Google Account',
             desc: 'zhiqianj68@gmail.com',
-            iconColor: '#4285F4', // Google品牌色
+            iconColor: '#4285F4',
             btnText: 'Disconnect',
         },
         {
             name: 'Microsoft Account',
             desc: 'Connect to sign in with Microsoft',
-            iconColor: '#00A4EF', // Microsoft品牌色
+            iconColor: '#00A4EF',
             btnText: 'Connect',
         },
         {
             name: 'Facebook',
             desc: 'Connect to sign in with Facebook',
-            iconColor: '#4a90e2', // Facebook品牌色
+            iconColor: '#4a90e2',
             btnText: 'Connect',
         },
         {
             name: 'X',
             desc: 'Connect to sign in with X',
-            iconColor: '#1DA1F2', // X(Twitter)品牌色
+            iconColor: '#1DA1F2',
             btnText: 'Connect',
         },
         {
             name: 'LinkedIn',
             desc: 'Connect to sign in with LinkedIn',
-            iconColor: '#0077B5', // LinkedIn品牌色
+            iconColor: '#0077B5',
             btnText: 'Connect',
         },
     ];
@@ -151,51 +211,67 @@ export default function UserCenterIndex() {
                 </div>
 
                 <div className="user-right-content">
-                    <div className="block">
-                        <div className="title2">Profile</div>
-                        <div className="lightcontent">Username</div>
-                        <div>{currentUserName}</div>
-                        <div>
-                            <Button className="button" onClick={() => showModal('name')}>
-                                Update name
-                            </Button>
+                    {/* 修复：添加加载状态渲染，避免数据未加载完成时显示空值 */}
+                    {loading ? (
+                        <div
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                height: '400px',
+                            }}
+                        >
+                            <Spin size="large" tip="Loading user info..." />
                         </div>
-                    </div>
-                    <div className="block">
-                        <div className="title2">Sign-in details</div>
-                        <div className="lightcontent">Email</div>
-
-                        <div className="emailRow">
-                            <span className="name">{currentEmail}</span>
-                            <div className="verifiedGroup">
-                                <span className="verified">Verified</span>
-                                <span className="check">
-                                    <CheckSmall theme="outline" size="20" fill="blue" />
-                                </span>
+                    ) : (
+                        <>
+                            <div className="block">
+                                <div className="title2">Profile</div>
+                                <div className="lightcontent">Username</div>
+                                <div>{currentUserName}</div>
+                                <div>
+                                    <Button className="button" onClick={() => showModal('name')}>
+                                        Update name
+                                    </Button>
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <Button className="button" onClick={() => showModal('email')}>
-                                Update email
-                            </Button>
-                        </div>
+                            <div className="block">
+                                <div className="title2">Sign-in details</div>
+                                <div className="lightcontent">Email</div>
 
-                        <hr className="customHr"></hr>
+                                <div className="emailRow">
+                                    <span className="name">{currentEmail}</span>
+                                    <div className="verifiedGroup">
+                                        <span className="verified">Verified</span>
+                                        <span className="check">
+                                            <CheckSmall theme="outline" size="20" fill="blue" />
+                                        </span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <Button className="button" onClick={() => showModal('email')}>
+                                        Update email
+                                    </Button>
+                                </div>
 
-                        <div className="lightcontent">Password</div>
-                        <div>
-                            <Button className="button" onClick={() => showModal('password')}>
-                                Update Password
-                            </Button>
-                        </div>
-                    </div>
+                                <hr className="customHr"></hr>
 
-                    <div>
-                        <Accounts />
-                    </div>
-                    <div>
-                        <DeleteAccount />
-                    </div>
+                                <div className="lightcontent">Password</div>
+                                <div>
+                                    <Button className="button" onClick={() => showModal('password')}>
+                                        Update Password
+                                    </Button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <Accounts />
+                            </div>
+                            <div>
+                                <DeleteAccount />
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
             <Modal
@@ -206,7 +282,8 @@ export default function UserCenterIndex() {
                 okText="Confirm"
                 cancelText="Cancel"
                 okButtonProps={{ disabled: isConfirmDisabled() }}
-                destroyOnClose={true} // 关闭时销毁弹窗内容，避免状态残留
+                destroyOnClose={true}
+                maskClosable={false} // 防止点击遮罩层关闭
             >
                 {renderModalContent()}
             </Modal>
