@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Input, Form, Button } from 'antd';
+import { Input, Form, Button, message } from 'antd'; // 新增 message 组件用于提示
 import ThirdButton from '../../compoments/login/thirdButton';
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { httpAuthRegister } from '../../api/login';
+
 export default function Register() {
     const navigate = useNavigate();
     const [email, setEmail] = useState(''); // 邮箱
@@ -28,65 +29,80 @@ export default function Register() {
         const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}`;
         window.location.href = authUrl;
     };
+
     const handleClickMicrosoft = () => {
         console.log('点击微软登录');
+        const clientId = 'c44b4083-3bb0-49c1-b47d-974e53cbdf3c';
+        const redirectUri = 'http://localhost:5173';
+        const responseType = 'code';
+        const responseMode = 'fragment';
+        const scope = 'https%3A%2F%2Fmanagement.core.windows.net%2F%2F.default%20openid%20profile%20offline_access';
+        const authUrl = `https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&response_mode=${responseMode}&scope=${scope}`;
+        window.location.href = authUrl;
     };
 
     // 邮箱失焦，校验邮箱格式
     const emailBlur = () => {
-        if (!email) {
+        validateEmail(); // 复用独立的邮箱校验函数
+    };
+
+    // 独立的邮箱校验函数（供失焦和提交时复用）
+    const validateEmail = () => {
+        const trimmedEmail = email.trim();
+        if (!trimmedEmail) {
             updateEmailStatusText('error', 'Email address is required.');
-            //   红框闪烁
-            //   setTimeout(() => {
-            //     setEmailStatus("");
-            //     setTimeout(() => {
-            //       setEmailStatus("error");
-            //       setTimeout(() => {
-            //         setEmailStatus("");
-            //       }, 500);
-            //     }, 500);
-            //   }, 500);
-            return;
+            return false;
         }
-        console.log(email);
-        // 邮箱失焦 邮箱格式校验
+        // 邮箱格式校验
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        console.log(emailRegex.test(String(email).toLowerCase()));
-        if (!emailRegex.test(String(email).toLowerCase())) {
+        if (!emailRegex.test(String(trimmedEmail).toLowerCase())) {
             updateEmailStatusText('error', 'Email address is not valid');
-        } else {
-            updateEmailStatusText('', '');
+            return false;
         }
+        updateEmailStatusText('', '');
+        return true;
     };
 
     // 密码失焦，校验密码
     const passwordBlur = () => {
-        if (!password) {
+        validatePassword(); // 复用独立的密码校验函数
+    };
+
+    // 独立的密码校验函数（供失焦和提交时复用）
+    const validatePassword = () => {
+        const trimmedPassword = password.trim();
+        if (!trimmedPassword) {
             updatePasswordStatusText('error', 'Password is required.');
-            return;
+            return false;
         }
-        if (confirmPassword && confirmPassword !== password) {
-            // 确认密码不一致
-            updateConfirmPasswordStatusText('error', "Password didn't match");
-            return;
-        } else {
-            updateConfirmPasswordStatusText('', '');
-            return;
+        // 可选：密码强度校验（至少8位，包含字母+数字）
+        const pwdRegex = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
+        if (!pwdRegex.test(trimmedPassword)) {
+            updatePasswordStatusText('error', 'Password must be at least 8 characters and contain letters and numbers');
+            return false;
         }
+        updatePasswordStatusText('', '');
+        return true;
     };
 
     // 确认密码失焦，校验确认密码
     const confirmPasswordBlur = () => {
-        if (!confirmPassword) {
+        validateConfirmPassword(); // 复用独立的确认密码校验函数
+    };
+
+    // 独立的确认密码校验函数（供失焦和提交时复用）
+    const validateConfirmPassword = () => {
+        const trimmedConfirmPwd = confirmPassword.trim();
+        if (!trimmedConfirmPwd) {
             updateConfirmPasswordStatusText('error', 'Password is required.');
-            return;
+            return false;
         }
-        if (confirmPassword !== password) {
-            // 确认密码不一致
+        if (trimmedConfirmPwd !== password.trim()) {
             updateConfirmPasswordStatusText('error', "Password didn't match");
-            return;
+            return false;
         }
         updateConfirmPasswordStatusText('', '');
+        return true;
     };
 
     // 设置邮箱输入框状态以及文案
@@ -112,23 +128,42 @@ export default function Register() {
         navigate('/login');
     };
 
-    //点击注册
+    // 点击注册（核心修改：添加完整校验逻辑）
     const handleClickRegister = () => {
-        // todo，邮箱密码校验
+        // 1. 先执行所有校验（复用已有的校验函数）
+        const isEmailValid = validateEmail();
+        const isPasswordValid = validatePassword();
+        const isConfirmPwdValid = validateConfirmPassword();
+
+        // 2. 只要有一个校验不通过，终止注册流程
+        if (!isEmailValid || !isPasswordValid || !isConfirmPwdValid) {
+            message.warning('Please fix the errors above before continuing'); // 全局提示
+            return;
+        }
+
+        // 3. 所有校验通过，发起注册请求
         httpAuthRegister({
-            email: email,
-            password: password,
+            email: email.trim(), // 传入去空格后的邮箱
+            password: password.trim(), // 传入去空格后的密码
         })
             .then((res) => {
-                if (res.code === 200) {
+                if (res && res.code === 200) {
+                    // 增加 res 非空判断，避免报错
                     console.log('注册成功', res);
+                    message.success('Registration successful! Redirecting to login...'); // 友好提示
                     localStorage.setItem('token', res.data.token);
-                    navigate('..');
+                    setTimeout(() => {
+                        // 延迟跳转，让用户看到提示
+                        navigate('..');
+                    }, 1500);
                 } else {
-                    console.log('注册失败', res.message);
+                    const errorMsg = res?.message || 'Registration failed!';
+                    message.error(errorMsg); // UI 提示错误
+                    console.log('注册失败', errorMsg);
                 }
             })
             .catch((err) => {
+                message.error('Network error! Please try again later.'); // 网络异常提示
                 console.log('接口异常', err);
             });
     };
@@ -155,7 +190,7 @@ export default function Register() {
                         <div className="input-name">Password</div>
                         <Input.Password
                             className="register-input"
-                            placeholder="Enter your password"
+                            placeholder="Enter your password (at least 8 chars, letters + numbers)" // 提示密码规则
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             onBlur={passwordBlur}
@@ -170,7 +205,7 @@ export default function Register() {
                         <div className="input-name">Confirm your password</div>
                         <Input.Password
                             className="register-input"
-                            placeholder="Enter your password"
+                            placeholder="Enter your password again"
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             onBlur={confirmPasswordBlur}

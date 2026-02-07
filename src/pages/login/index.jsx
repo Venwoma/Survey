@@ -25,8 +25,16 @@ export default function Index() {
         const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}`;
         window.location.href = authUrl;
     };
+
     const handleClickMicrosoft = () => {
         console.log('点击微软登录');
+        const clientId = 'c44b4083-3bb0-49c1-b47d-974e53cbdf3c';
+        const redirectUri = 'http://localhost:5173';
+        const responseType = 'code';
+        const responseMode = 'fragment';
+        const scope = 'https%3A%2F%2Fmanagement.core.windows.net%2F%2F.default%20openid%20profile%20offline_access';
+        const authUrl = `https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&response_mode=${responseMode}&scope=${scope}`;
+        window.location.href = authUrl;
     };
 
     // 邮箱失焦，校验邮箱格式
@@ -83,6 +91,30 @@ export default function Index() {
         navigate('/login/register');
     };
     const keepSubmit = () => {
+        const trimmedEmail = email.trim();
+        const trimmedPassword = password.trim();
+
+        if (!trimmedEmail) {
+            message.error('Please enter your email!'); // 提示用户输入邮箱
+            return; // 终止函数执行，不发起请求
+        }
+
+        if (!trimmedPassword) {
+            message.error('Please enter your password!'); // 提示用户输入密码
+            return; // 终止函数执行，不发起请求
+        }
+
+        const emailReg = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+        if (!emailReg.test(trimmedEmail)) {
+            message.error('Please enter a valid email address!');
+            return;
+        }
+
+        if (trimmedPassword.length < 6) {
+            message.error('Password must be at least 6 characters!');
+            return;
+        }
+
         httpAuthLogin({ email, password })
             .then((res) => {
                 if (res.code === 200) {

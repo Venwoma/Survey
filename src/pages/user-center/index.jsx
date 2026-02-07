@@ -28,8 +28,8 @@ export default function UserCenterIndex() {
 
             if (result && result.data && result.data.account) {
                 const { username, email, password } = result.data.account;
-                setCurrentUserName(username || `User_${Math.floor(Math.random() * 10000)}`);
-                setCurrentEmail(email || `user_${Math.floor(Math.random() * 10000)}@example.com`);
+                setCurrentUserName(username);
+                setCurrentEmail(email);
                 setCurrentPassword(password || '');
                 console.log('从接口获取的密码：', password);
             } else {
@@ -130,12 +130,12 @@ export default function UserCenterIndex() {
             case 'email':
                 return (
                     <>
-                        <div>we'll send an email to the address for you to confirm.</div> {/* 修复拼写错误 comfirm -> confirm */}
+                        <div>we'll send an email to the address for you to confirm.</div>
                         <div>Your email</div>
                         <Input
                             value={newEmail}
                             onChange={(e) => setNewEmail(e.target.value)}
-                            maxLength={50} // 邮箱长度限制放宽
+                            maxLength={50}
                             placeholder="Enter new email address"
                             disabled={loading}
                         />
@@ -167,7 +167,6 @@ export default function UserCenterIndex() {
         }
     };
 
-    // 修复：注释掉未使用的 messageApi，避免警告
     // const messageApi = commonStore((state) => state.messageApi);
 
     const socialAccounts = [

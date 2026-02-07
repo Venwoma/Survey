@@ -100,7 +100,7 @@ export default {
         data: {
             project: {
                 name: `Project_${Mock.Random.integer(1000, 999999)}`,
-                url: Mock.Random.url(),
+                url: '@url',
             },
         },
     },

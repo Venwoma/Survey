@@ -1,5 +1,4 @@
 //mock请求函数，模拟axios
-
 import Mock from 'mockjs';
 import mockData from './mock-data';
 import { useFastExtend } from '@kyol/usejs';
