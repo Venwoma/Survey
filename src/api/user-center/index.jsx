@@ -7,3 +7,11 @@ import { $post } from '../base';
 export function httpAccount(params) {
     return $post('/api/user-center/account', params);
 }
+
+/**
+ * @method 获取项目信息
+ */
+
+export function httpProject(params) {
+    return $post('/api/user-center/project', params);
+}

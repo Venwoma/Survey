@@ -10,7 +10,6 @@ Mock.Random.extend({
     },
 });
 
-
 const generatePassword = () => {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let password = '';
@@ -94,6 +93,14 @@ export default {
                 username: '@name',
                 email: '@comEmail',
                 password: generatePassword(),
+            },
+        },
+    },
+    'POST /api/user-center/project': {
+        data: {
+            project: {
+                name: `Project_${Mock.Random.integer(1000, 999999)}`,
+                url: Mock.Random.url(),
             },
         },
     },

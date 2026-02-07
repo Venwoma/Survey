@@ -17,20 +17,21 @@ export default function UserCenterIndex() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [currentUserName, setCurrentUserName] = useState('');
     const [currentEmail, setCurrentEmail] = useState('');
-    const [currentPassword,setCurrentPassword] = useState('');
+    const [currentPassword, setCurrentPassword] = useState('');
     const [loading, setLoading] = useState(true);
 
     const fetchMockUserInfo = async () => {
         try {
             setLoading(true);
-            // 调用封装的接口（失败自动返回 Mock 数据）
+
             const result = await httpAccount();
 
-            // 数据校验
             if (result && result.data && result.data.account) {
-                const { username, email } = result.data.account;
+                const { username, email, password } = result.data.account;
                 setCurrentUserName(username || `User_${Math.floor(Math.random() * 10000)}`);
                 setCurrentEmail(email || `user_${Math.floor(Math.random() * 10000)}@example.com`);
+                setCurrentPassword(password || '');
+                console.log('从接口获取的密码：', password);
             } else {
                 throw new Error('数据格式异常');
             }
@@ -55,13 +56,12 @@ export default function UserCenterIndex() {
         setModalType(type);
         setIsModalOpen(true);
 
-        // 修复：增加空值判断，避免设置 undefined
         if (type === 'name') setNewUsername(currentUserName || '');
         if (type === 'email') setNewEmail(currentEmail || '');
         if (type === 'password') {
             setNewPassword('');
             setConfirmPassword('');
-            console.log('当前password:',currentPassword);
+            console.log('当前password:', currentPassword);
         }
     };
 
@@ -90,6 +90,7 @@ export default function UserCenterIndex() {
                     return;
                 }
                 console.log('更新后的密码：', newPassword);
+                setCurrentPassword(newPassword);
                 message.success('Password updated successfully!');
             }
             handleCancel();
@@ -98,7 +99,6 @@ export default function UserCenterIndex() {
         }
     };
 
-    // 修复：关键错误 - 对比动态的 currentUserName 而不是固定值
     const isConfirmDisabled = () => {
         if (modalType === 'name') {
             return !newUsername.trim() || newUsername === currentUserName;
