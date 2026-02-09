@@ -4,6 +4,7 @@ import { Input, Form, Checkbox, Button } from 'antd';
 import ThirdButton from '../../compoments/login/thirdButton';
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { httpAuthLogin } from '../../api/login';
+import logoImg from '@/assets/images/logo-img.png';
 
 export default function Index() {
     const navigate = useNavigate();
@@ -135,7 +136,9 @@ export default function Index() {
     return (
         <div className="login-page">
             <div className="login-content">
-                <div className="login-logo"></div>
+                <div className="login-logo">
+                    <img src={logoImg} style={{ width: '75px', height: '75px' }} alt="logo" />
+                </div>
                 <span className="login-title">Sign in to your account</span>
                 <span className="login-tips">Get insight with pop-up surveys</span>
                 {/* 谷歌/微软登录 */}

@@ -4,6 +4,7 @@ import ThirdButton from '../../compoments/login/thirdButton';
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { httpAuthRegister } from '../../api/login';
+import logoImg from '@/assets/images/logo-img.png';
 
 export default function Register() {
     const navigate = useNavigate();
@@ -171,7 +172,9 @@ export default function Register() {
     return (
         <div className="register-page">
             <div className="register-content">
-                <div className="register-logo"></div>
+                <div className="register-logo">
+                    <img src={logoImg} style={{ width: '75px', height: '75px' }} alt="logo" />
+                </div>
                 <span className="register-title">Let's get started</span>
                 <span className="register-tips">Get insight with pop-up surveys</span>
                 <Form className="email-form">
