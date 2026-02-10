@@ -52,7 +52,9 @@ export default function Plans() {
                             <li>✅ 1 domain site</li>
                             <li>✅ Basic data reports</li>
                         </ul>
-                        <Button className="bt current">Current Plan</Button>
+                        <Button className="bt current" disabled>
+                            Current Plan
+                        </Button>
                     </div>
 
                     {/* Premium Plan Card */}
@@ -76,7 +78,15 @@ export default function Plans() {
                             <li>✅ AI-powered intelligent reports</li>
                             <li>✅ Priority email support</li>
                         </ul>
-                        <Button className="bt start">Start 14-days free trial</Button>
+                        <Button
+                            className="bt start"
+                            onClick={() => {
+                                window.location.href =
+                                    'https://checkout.stripe.com/c/pay/cs_test_a1qOsq7m6TS9dDxrKJcFxaXOSj0jzv5CZFWA3ZqIi3mvsNX5rRDYfgjYv3#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdkdWxOYHwnPyd1blpxYHZxWjA0Vl91QX0zVTBfdjVuQmJhcEZ8ZmlAPFZzdXJ2QH8wPTx2cGRwYmE0MmtvUk90SkJoSG5gbFRQZDxzYzVSMkFja0JsPFdRMDF9STc3Tz03QkA0bE18VXV3NTVyfFVRX3FrQCcpJ2N3amhWYHdzYHcnP3F3cGApJ2dkZm5id2pwa2FGamlqdyc%2FJyZjY2NjY2MnKSdpZHxqcHFRfHVgJz8ndmxrYmlgWmxxYGgnKSdga2RnaWBVaWRmYG1qaWFgd3YnP3F3cGB4JSUl';
+                            }}
+                        >
+                            Start 14-days free trial
+                        </Button>
                     </div>
                 </div>
 
