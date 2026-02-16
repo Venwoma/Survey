@@ -2,6 +2,8 @@ import { commonStore } from '../../store';
 import Header from '../../compoments/admin/header';
 import ZSelect from '../../compoments/admin/zSelect';
 import ZTable from '../../compoments/admin/zTable';
+import { useState } from 'react';
+
 export default function AdminIndex() {
     const messageApi = commonStore((state) => state.messageApi);
     const showAdminLeft = commonStore((state) => state.showAdminLeft);
@@ -10,6 +12,14 @@ export default function AdminIndex() {
         messageApi.info(showAdminLeft ? '隐藏左边栏' : '展开左边栏');
         set((state) => (state.showAdminLeft = !showAdminLeft));
     };
+    // 筛选状态
+    const [filter, setFilter] = useState({
+        category: '0',
+        status: '0',
+        date: '0',
+        response: '0',
+    });
+
     // 筛选下拉数据
     const filterSelects = [
         {
@@ -106,12 +116,23 @@ export default function AdminIndex() {
             </div>
             <div className="index-filter">
                 {filterSelects.map((select) => (
-                    <ZSelect value={select.value} options={select.options} width={select.width} showPreIcon={select.showIcon}></ZSelect>
+                    <ZSelect
+                        value={select.value}
+                        options={select.options}
+                        width={select.width}
+                        showPreIcon={select.showIcon}
+                        onChange={(val) => {
+                            setFilter((prev) => ({
+                                ...prev,
+                                [select.name]: val,
+                            }));
+                        }}
+                    />
                 ))}
             </div>
             <div className="table-scroll-wrapper">
                 <div className="index-table">
-                    <ZTable></ZTable>
+                    <ZTable filter={filter} />
                 </div>
             </div>
         </div>

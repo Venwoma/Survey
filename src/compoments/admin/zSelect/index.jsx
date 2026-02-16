@@ -1,8 +1,9 @@
 import { Select } from 'antd';
 import select from './index.module.scss';
-export default function ZSelect({ value, options, width, showPreIcon }) {
+export default function ZSelect({ value, options, width, showPreIcon, onChange }) {
     const Option = Select.Option;
     function handleChange(value) {
+        onChange && onChange(value);
         console.log(`selected ${value}`);
     }
     return (

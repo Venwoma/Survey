@@ -70,7 +70,7 @@ export default {
 
                         return `${value} ${type} ago`;
                     },
-                    category: '@name',
+                    'category|1': ['Coversion Optimization', 'User Experience', 'Product Feedback', 'Customer Retention', 'Sale Enablement'],
                     'triggers|0-10000': 10000,
                     responses: function () {
                         return Mock.Random.integer(0, this.triggers);

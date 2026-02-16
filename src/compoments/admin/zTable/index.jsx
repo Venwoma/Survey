@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { message } from 'antd';
 import { httpAdminList } from '@/api/admin';
 
-export default function ZTable() {
+export default function ZTable({ filter }) {
     useEffect(() => {
         getTableList();
     }, []);
@@ -147,6 +147,7 @@ export default function ZTable() {
             message.error('Failed to load list');
         }
     };
+
     //   表格数据
     const [tableData, setTableData] = useState([
         // {
@@ -183,10 +184,52 @@ export default function ZTable() {
         //     status: 'Paused',
         // },
     ]);
+    const filteredData = tableData
+        .filter((item) => {
+            // 分类过滤
+            if (filter.category !== '0') {
+                const categoryMap = {
+                    1: 'Coversion Optimization',
+                    2: 'User Experience',
+                    3: 'Product Feedback',
+                    4: 'Customer Retention',
+                    5: 'Sale Enablement',
+                };
+
+                if (item.category !== categoryMap[filter.category]) {
+                    return false;
+                }
+            }
+
+            //状态过滤
+            if (filter.status !== '0') {
+                const statusMap = {
+                    1: 'Active',
+                    2: 'Draft',
+                    3: 'Paused',
+                };
+
+                if (item.status !== statusMap[filter.status]) {
+                    return false;
+                }
+            }
+
+            return true;
+        })
+        .sort((a, b) => {
+            // 按 response 排序
+            if (filter.response === '0') {
+                return b.responses - a.responses; // Most
+            }
+            if (filter.response === '1') {
+                return a.responses - b.responses; // Fewest
+            }
+            return 0;
+        });
 
     return (
         <div className={table.tableBox}>
-            <Table columns={columns} dataSource={tableData} rowClassName={table.row} rowKey={(record) => record.id}></Table>
+            <Table columns={columns} dataSource={filteredData} rowClassName={table.row} rowKey={(record) => record.id}></Table>
         </div>
     );
 }
