@@ -18,9 +18,6 @@ export default function Admin() {
             <div className={clsx('admin-left', showAdminLeft && 'show-left')}>
                 <LeftMenu></LeftMenu>
 
-               
-
-
                 <div className="collapsed-button" onClick={() => test()}>
                     {showAdminLeft ? '<' : '>'}
                 </div>
