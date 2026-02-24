@@ -9,6 +9,6 @@ globalThis.cls = (text, value, { fc = '#35495e', sc = '#41b883' } = {}) => {
 
 createRoot(document.getElementById('root')).render(
     //   <StrictMode>
-    <AppRouter />
+    <AppRouter />,
     // </BrowserRouter>
 );

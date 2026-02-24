@@ -5,7 +5,8 @@ import { Spin } from 'antd';
 import FRoutes from './index.jsx';
 import Layout from '../compoments/layout/index.jsx';
 
-const router = createBrowserRouter(FRoutes, { basename: '/' });
+const basename = process.env.REACT_APP_BASENAME || '/';
+const router = createBrowserRouter(FRoutes, { basename });
 export default function App() {
     // const Router = useRoutes(FRoutes);
     return (
