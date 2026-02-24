@@ -30,10 +30,6 @@ export default defineConfig(async ({ command, mode }) => {
         }),
     );
 
-    //buildConf.base = command === 'serve' ? '/' : '/project1/';
-    const BASE_PATH = ENV.VITE_BASE_PATH || (command === 'serve' ? '/' : '/project1/');
-    buildConf.base = BASE_PATH;
-
     buildConf.define = {
         VITE_APP_CDN: JSON.stringify(ENV.VITE_APP_CDN),
         VITE_APP_SDK_URL: JSON.stringify(ENV.VITE_APP_SDK_URL),
