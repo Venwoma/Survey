@@ -10,7 +10,7 @@ export default defineConfig(async ({ command, mode }) => {
     const isSSG = mode === 'ssg';
     const configType = ['sdk', 'ui', 'ssg'].includes(mode) ? mode : 'crm';
     let buildConf = await import(`./config/${configType}.conf.js`).then((res) =>
-        typeof res.default === 'function' ? res.default({ command, mode }) : res.default
+        typeof res.default === 'function' ? res.default({ command, mode }) : res.default,
     );
     console.log('vite-config.js=>', isSSG);
 
@@ -27,8 +27,11 @@ export default defineConfig(async ({ command, mode }) => {
                 <div class="production" style="flex: 0.3; border: 1px red solid; height: 50px"></div>
             </div>`
                 : '',
-        })
+        }),
     );
+
+    buildConf.base = command === 'serve' ? '/' : '/project1/';
+
     buildConf.define = {
         VITE_APP_CDN: JSON.stringify(ENV.VITE_APP_CDN),
         VITE_APP_SDK_URL: JSON.stringify(ENV.VITE_APP_SDK_URL),
