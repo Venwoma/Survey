@@ -5,9 +5,7 @@ import { Spin } from 'antd';
 import FRoutes from './index.jsx';
 import Layout from '../compoments/layout/index.jsx';
 
-const basename = import.meta.env.VITE_BASENAME || '/';
-
-const router = createBrowserRouter(FRoutes, { basename });
+const router = createBrowserRouter(FRoutes, { basename: '/' });
 export default function App() {
     // const Router = useRoutes(FRoutes);
     return (
