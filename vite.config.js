@@ -30,7 +30,7 @@ export default defineConfig(async ({ command, mode }) => {
         }),
     );
 
-    buildConf.base = command === 'serve' ? '/' : '/project1/';
+    //buildConf.base = command === 'serve' ? '/' : '/project1/';
 
     buildConf.define = {
         VITE_APP_CDN: JSON.stringify(ENV.VITE_APP_CDN),
