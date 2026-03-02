@@ -3,6 +3,8 @@ import '../assets/css/index.scss';
 import { useEffect, useRef, useState } from 'react';
 import { useMobileDetection } from '../hooks/useMobileDetection.jsx';
 import { ClientOnly } from 'vite-react-ssg';
+
+
 const saveCardList = [
     {
         title: 'End-to-End Encryption',
@@ -157,7 +159,7 @@ export default function Index() {
         }
         metaDescription.setAttribute(
             'content',
-            'Stop guessing and start growing. Our platform uses AI to analyze user behavior on your site, identifies key moments, and collects critical feedback to help you make smarter business decisions.'
+            'Stop guessing and start growing. Our platform uses AI to analyze user behavior on your site, identifies key moments, and collects critical feedback to help you make smarter business decisions.',
         );
         document.head.prepend(metaDescription);
         // 设置 meta keywords
@@ -168,7 +170,7 @@ export default function Index() {
         }
         metaKeywords.setAttribute(
             'content',
-            'AI survey, user feedback, customer insights, behavioral analytics, micro-surveys, in-app surveys, user experience, product management, product growth, user retention, customer engagement, automated surveys, real-time feedback, SaaS tools, product analytics, AI feedback'
+            'AI survey, user feedback, customer insights, behavioral analytics, micro-surveys, in-app surveys, user experience, product management, product growth, user retention, customer engagement, automated surveys, real-time feedback, SaaS tools, product analytics, AI feedback',
         );
         document.head.prepend(metaKeywords);
         const title = document.head.querySelector('title');
@@ -196,6 +198,7 @@ export default function Index() {
     return (
         <div className={`index-page ${isMobile ? 'mobile-index-page' : ''}`} ref={pageRef}>
             {/* 吸顶头部 */}
+           
             <div className={`index-fixed-header${isHeaderScrolled ? ' scrolled' : ''} ${isMobile ? 'mobile-index-fixed-header' : ''}`}>
                 <img
                     className={`index-header-left ${isMobile ? 'mobile-index-header-left' : ''}`}

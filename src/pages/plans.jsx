@@ -2,8 +2,17 @@ import '../assets/css/plans/index.scss';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
 import { Mail } from '@icon-park/react';
+import { useAutoTranslate } from '../hooks/useAutoTranslate';
+//import { useLanguage } from '../hooks/LanguageContext';
 
 export default function Plans() {
+    const { translatePage, isTranslated } = useAutoTranslate();
+    // const { language } = useLanguage();
+    // useEffect(() => {
+    //     if (language === 'zh-CN') {
+    //         translateCurrentPage();
+    //     }
+    // }, [language]);
     const navigate = useNavigate();
 
     const faqData = [
@@ -22,6 +31,7 @@ export default function Plans() {
     ];
     return (
         <div className="plans-container">
+            <button onClick={translatePage}>{isTranslated ? '恢复原文' : '切换中文'}</button>
             <div className="plans-menu">
                 <div className="back" onClick={() => navigate('/user-center/plan-billing')}>
                     <span className="backIcon"> ← </span>
